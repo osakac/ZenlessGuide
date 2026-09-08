@@ -1,0 +1,330 @@
+{
+  "characters": [
+    {
+      "id": "ellen-joe",
+      "slug": "ellen-joe",
+      "name": "Эллен Джо",
+      "rarity": "S",
+      "attribute": "ice",
+      "specialty": "attack",
+      "weaponType": "slash",
+      "faction": "Victoria Housekeeping",
+      "shortDescription": "Ледяной ДД ближнего боя: копит заряд рывками и обрушивает его одним усиленным ударом.",
+      "image": "/images/characters/ellen-joe.svg",
+      "stats": {
+        "hp": 7674,
+        "atk": 863,
+        "def": 606,
+        "impact": 93,
+        "critRate": "5%",
+        "critDmg": "50%",
+        "anomalyProficiency": 92
+      },
+      "buildGuide": {
+        "engines": [
+          {
+            "name": "Deep Sea Visitor",
+            "note": "Сигнатурное оружие: бонус к ледяному урону и крит. шансу по замороженным целям."
+          },
+          {
+            "name": "The Brimstone",
+            "note": "Универсальная альтернатива за счёт стаков к атаке."
+          },
+          {
+            "name": "Steel Cushion",
+            "note": "Бюджетный вариант: усиливает урон с тыла."
+          }
+        ],
+        "discs": [
+          {
+            "setName": "Polar Metal",
+            "pieces": 4,
+            "note": "Ключевой сет: усиливает базовую и специальную атаку по замороженным врагам."
+          },
+          {
+            "setName": "Woodpecker Electro",
+            "pieces": 2,
+            "note": "Крит. шанс — закрывает главную проблему билда."
+          }
+        ],
+        "mainStats": [
+          { "slot": "Слот 4", "stat": "Крит. шанс / Крит. урон" },
+          { "slot": "Слот 5", "stat": "Бонус ледяного урона" },
+          { "slot": "Слот 6", "stat": "Атака %" }
+        ],
+        "subStats": ["Крит. шанс", "Крит. урон", "Атака %", "Пробитие брони"],
+        "skillPriority": [
+          "Особый приём",
+          "Базовая атака",
+          "Уклонение",
+          "Цепная атака",
+          "Помощь"
+        ],
+        "teams": [
+          {
+            "name": "Двойной лёд",
+            "members": ["Эллен Джо", "Фон Ликаон", "Сокаку"],
+            "note": "Ликаон снижает сопротивление льду и оглушает, Сокаку держит бафы атаки."
+          },
+          {
+            "name": "Бюджетная сборка",
+            "members": ["Эллен Джо", "Фон Ликаон", "Люси"],
+            "note": "Люси даёт бонус к атаке всей команде без сигнатурного оружия."
+          }
+        ],
+        "tips": [
+          "Заряд копится уклонениями и парированием — не тратьте его на рядовых врагов.",
+          "Усиленный особый приём выгоднее держать до окна оглушения."
+        ]
+      }
+    },
+    {
+      "id": "zhu-yuan",
+      "slug": "zhu-yuan",
+      "name": "Чжу Юань",
+      "rarity": "S",
+      "attribute": "ether",
+      "specialty": "attack",
+      "weaponType": "pierce",
+      "faction": "Criminal Investigation Special Response Team",
+      "shortDescription": "Эфирный стрелок: в усиленном режиме выдаёт весь урон очередями с дистанции.",
+      "image": "/images/characters/zhu-yuan.svg",
+      "stats": {
+        "hp": 7673,
+        "atk": 871,
+        "def": 606,
+        "impact": 88,
+        "critRate": "5%",
+        "critDmg": "50%",
+        "anomalyProficiency": 90
+      },
+      "buildGuide": {
+        "engines": [
+          {
+            "name": "Riot Suppressor Mark VI",
+            "note": "Сигнатурное: усиливает урон усиленной базовой атаки."
+          },
+          {
+            "name": "The Brimstone",
+            "note": "Стабильный рост атаки от попаданий."
+          },
+          {
+            "name": "Starlight Engine",
+            "note": "Бюджетный вариант с бонусом к атаке."
+          }
+        ],
+        "discs": [
+          {
+            "setName": "Chaotic Metal",
+            "pieces": 4,
+            "note": "Профильный эфирный сет: крит. урон и усиление при аномалии."
+          },
+          {
+            "setName": "Woodpecker Electro",
+            "pieces": 2,
+            "note": "Крит. шанс."
+          }
+        ],
+        "mainStats": [
+          { "slot": "Слот 4", "stat": "Крит. урон" },
+          { "slot": "Слот 5", "stat": "Бонус эфирного урона" },
+          { "slot": "Слот 6", "stat": "Атака %" }
+        ],
+        "subStats": ["Крит. шанс", "Крит. урон", "Атака %", "Пробитие брони"],
+        "skillPriority": [
+          "Базовая атака",
+          "Особый приём",
+          "Цепная атака",
+          "Уклонение",
+          "Помощь"
+        ],
+        "teams": [
+          {
+            "name": "Стандартная команда",
+            "members": ["Чжу Юань", "Цинъи", "Никка"],
+            "note": "Цинъи даёт длинное окно оглушения, Никка усиливает урон и подтягивает врагов."
+          }
+        ],
+        "tips": [
+          "Патроны усиленного режима расходуйте только в окне оглушения.",
+          "Держитесь на дистанции: надёжного ближнего боя у неё нет."
+        ]
+      }
+    },
+    {
+      "id": "lycaon",
+      "slug": "lycaon",
+      "name": "Фон Ликаон",
+      "rarity": "S",
+      "attribute": "ice",
+      "specialty": "stun",
+      "weaponType": "strike",
+      "faction": "Victoria Housekeeping",
+      "shortDescription": "Ледяной оглушитель: быстро набивает шкалу дисбаланса и режет ледяное сопротивление цели.",
+      "image": "/images/characters/lycaon.svg",
+      "stats": {
+        "hp": 8416,
+        "atk": 654,
+        "def": 611,
+        "impact": 119,
+        "critRate": "5%",
+        "critDmg": "50%"
+      },
+      "buildGuide": {
+        "engines": [
+          {
+            "name": "The Restrained",
+            "note": "Профильное оружие оглушителя: рост множителя дисбаланса."
+          }
+        ],
+        "discs": [
+          {
+            "setName": "Shockstar Disco",
+            "pieces": 4,
+            "note": "Плюс к урону по дисбалансу."
+          },
+          {
+            "setName": "Swing Jazz",
+            "pieces": 2,
+            "note": "Энергия для более частых особых приёмов."
+          }
+        ],
+        "mainStats": [
+          { "slot": "Слот 4", "stat": "Атака %" },
+          { "slot": "Слот 6", "stat": "Импакт %" }
+        ],
+        "skillPriority": ["Особый приём", "Базовая атака", "Помощь"]
+      }
+    },
+    {
+      "id": "koleda",
+      "slug": "koleda",
+      "name": "Коледа Белобог",
+      "rarity": "S",
+      "attribute": "fire",
+      "specialty": "stun",
+      "weaponType": "strike",
+      "faction": "Belobog Heavy Industries",
+      "shortDescription": "Огненный оглушитель с молотом: тяжёлые удары и мощная цепная атака.",
+      "image": "/images/characters/koleda.svg",
+      "stats": {
+        "hp": 8189,
+        "atk": 663,
+        "def": 600,
+        "impact": 119
+      },
+      "buildGuide": {
+        "engines": [
+          {
+            "name": "Precious Fossilized Core",
+            "note": "Сигнатурное: усиливает урон по оглушённым целям."
+          }
+        ],
+        "discs": [
+          { "setName": "Shockstar Disco", "pieces": 4 },
+          {
+            "setName": "Inferno Metal",
+            "pieces": 2,
+            "note": "Бонус к огненному урону."
+          }
+        ],
+        "tips": ["Связка с Беном ускоряет набор дисбаланса."]
+      }
+    },
+    {
+      "id": "grace-howard",
+      "slug": "grace-howard",
+      "name": "Грейс Ховард",
+      "rarity": "S",
+      "attribute": "electric",
+      "specialty": "anomaly",
+      "weaponType": "pierce",
+      "faction": "Belobog Heavy Industries",
+      "shortDescription": "Специалист по аномалиям: стабильно накладывает шок и живёт за счёт мастерства аномалий.",
+      "image": "/images/characters/grace-howard.svg",
+      "stats": {
+        "hp": 7508,
+        "atk": 660,
+        "def": 606,
+        "anomalyProficiency": 118
+      },
+      "buildGuide": {
+        "engines": [
+          {
+            "name": "Fusion Compiler",
+            "note": "Профильное оружие специалиста по аномалиям."
+          }
+        ],
+        "discs": [
+          {
+            "setName": "Freedom Blues",
+            "pieces": 4,
+            "note": "Мастерство аномалий."
+          },
+          {
+            "setName": "Thunder Metal",
+            "pieces": 2,
+            "note": "Бонус к электрическому урону."
+          }
+        ],
+        "mainStats": [{ "slot": "Слот 6", "stat": "Мастерство аномалий" }]
+      }
+    },
+    {
+      "id": "nekomata",
+      "slug": "nekomata",
+      "name": "Некомата",
+      "rarity": "S",
+      "attribute": "physical",
+      "specialty": "attack",
+      "weaponType": "slash",
+      "faction": "Cunning Hares",
+      "shortDescription": "Быстрый физический ДД: заходит врагу в спину и вызывает пробой.",
+      "image": "/images/characters/nekomata.svg",
+      "stats": {
+        "hp": 7501,
+        "atk": 843,
+        "def": 600
+      },
+      "buildGuide": {
+        "engines": [
+          { "name": "Steel Cushion", "note": "Бонус к урону с тыла." }
+        ],
+        "discs": [{ "setName": "Puffer Electro", "pieces": 4 }]
+      }
+    },
+    {
+      "id": "anby-demara",
+      "slug": "anby-demara",
+      "name": "Энби Демара",
+      "rarity": "A",
+      "attribute": "electric",
+      "specialty": "stun",
+      "weaponType": "slash",
+      "faction": "Cunning Hares",
+      "shortDescription": "Доступный электрический оглушитель — крепкая основа для ранних команд.",
+      "image": "/images/characters/anby-demara.svg",
+      "stats": {
+        "hp": 7673,
+        "atk": 617,
+        "def": 606,
+        "impact": 118
+      },
+      "buildGuide": {
+        "discs": [{ "setName": "Shockstar Disco", "pieces": 4 }]
+      }
+    },
+    {
+      "id": "ben-bigger",
+      "slug": "ben-bigger",
+      "name": "Бен Биггер",
+      "rarity": "A",
+      "attribute": "fire",
+      "specialty": "defense",
+      "weaponType": "strike",
+      "faction": "Belobog Heavy Industries",
+      "shortDescription": "Защитник: парирует удары и конвертирует защиту в урон, прикрывая команду.",
+      "image": "/images/characters/ben-bigger.svg"
+    }
+  ]
+}

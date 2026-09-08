@@ -1,0 +1,55 @@
+{
+  "updatedAt": "2026-09-08",
+  "tiers": [
+    {
+      "id": "S",
+      "label": "S",
+      "description": "Определяют мету: тянут состав даже без сигнатурного оружия."
+    },
+    {
+      "id": "A",
+      "label": "A",
+      "description": "Сильные персонажи, полностью закрывают свою роль в большинстве команд."
+    },
+    {
+      "id": "B",
+      "label": "B",
+      "description": "Рабочие варианты, но требуют вложений или удачной команды."
+    },
+    {
+      "id": "C",
+      "label": "C",
+      "description": "Ситуативные: качать в первую очередь не стоит."
+    }
+  ],
+  "entries": [
+    {
+      "characterId": "ellen-joe",
+      "tier": "S",
+      "note": "Эталонный ДД: лучший урон в окне оглушения."
+    },
+    {
+      "characterId": "zhu-yuan",
+      "tier": "S",
+      "note": "Максимальный урон по одиночной цели при правильной команде."
+    },
+    {
+      "characterId": "lycaon",
+      "tier": "S",
+      "note": "Лучший оглушитель для ледяных команд."
+    },
+    { "characterId": "koleda", "tier": "A" },
+    {
+      "characterId": "grace-howard",
+      "tier": "A",
+      "note": "Раскрывается в командах, построенных вокруг аномалий."
+    },
+    { "characterId": "nekomata", "tier": "B" },
+    {
+      "characterId": "anby-demara",
+      "tier": "B",
+      "note": "Лучший выбор среди A-ранга на старте."
+    },
+    { "characterId": "ben-bigger", "tier": "C" }
+  ]
+}
