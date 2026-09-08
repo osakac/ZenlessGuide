@@ -16,25 +16,25 @@
     {
       "characterId": "ye-shunguang",
       "tier": "S",
-      "role": "dps",
+      "role": "pure-dps",
       "note": "Лучший физический ДД текущей меты."
     },
     {
       "characterId": "aria",
       "tier": "S",
-      "role": "sub-dps"
+      "role": "anomaly-dps"
     },
     {
       "characterId": "remielle",
       "tier": "S",
-      "role": "sub-dps",
-      "note": "Носитель новой стихии Светопоток."
+      "role": "anomaly-dps",
+      "note": "Носитель нового атрибута Люмен."
     },
     {
       "characterId": "velina",
       "tier": "S",
-      "role": "sub-dps",
-      "note": "Носитель стихии Ветер."
+      "role": "anomaly-dps",
+      "note": "Носитель атрибута Ветер."
     },
     {
       "characterId": "dialyn",
@@ -72,67 +72,67 @@
     {
       "characterId": "yixuan",
       "tier": "A",
-      "role": "dps",
+      "role": "pure-dps",
       "note": "Урон масштабируется от HP — требует отдельного билда."
     },
     {
       "characterId": "sigrid",
       "tier": "A",
-      "role": "dps"
+      "role": "pure-dps"
     },
     {
       "characterId": "banyue",
       "tier": "A",
-      "role": "dps"
+      "role": "pure-dps"
     },
     {
       "characterId": "billy-starlight",
       "tier": "A",
-      "role": "dps",
+      "role": "pure-dps",
       "note": "Разрушение вместо атаки: масштабируется от HP."
     },
     {
       "characterId": "cissia",
       "tier": "A",
-      "role": "dps"
+      "role": "pure-dps"
     },
     {
       "characterId": "pyrois",
       "tier": "A",
-      "role": "dps"
+      "role": "pure-dps"
     },
     {
       "characterId": "seed",
       "tier": "A",
-      "role": "dps",
+      "role": "pure-dps",
       "note": "Повышенный базовый крит. урон — 78,8% против обычных 50%."
     },
     {
       "characterId": "yidhari",
       "tier": "A",
-      "role": "dps"
+      "role": "pure-dps"
     },
     {
       "characterId": "miyabi",
       "tier": "A",
-      "role": "sub-dps",
+      "role": "anomaly-dps",
       "note": "Долго держала верхушку тир-листа, сейчас чуть ниже."
     },
     {
       "characterId": "burnice",
       "tier": "A",
-      "role": "sub-dps",
+      "role": "anomaly-dps",
       "note": "Почти не требует времени на поле."
     },
     {
       "characterId": "alice",
       "tier": "A",
-      "role": "sub-dps"
+      "role": "anomaly-dps"
     },
     {
       "characterId": "promeia",
       "tier": "A",
-      "role": "sub-dps",
+      "role": "anomaly-dps",
       "note": "Самое высокое мастерство аномалий в списке."
     },
     {

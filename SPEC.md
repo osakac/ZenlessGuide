@@ -69,7 +69,7 @@ type Character = {
 type TierEntry = {
   characterId: string;
   tier: string;                          // S / A
-  role: "dps" | "sub-dps" | "support";   // место в команде внутри тира
+  role: "pure-dps" | "anomaly-dps" | "support"; // колонка в сетке тир-листа
 };
 ```
 

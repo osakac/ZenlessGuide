@@ -24,9 +24,9 @@ const specialtyLabels: Record<string, string> = {
 
 /** Роли в тир-листе: как персонаж используется в команде. */
 const tierRoleLabels: Record<string, string> = {
-  dps: "Основной ДД",
-  "sub-dps": "Саб-ДД",
-  support: "Поддержка",
+  "pure-dps": "Pure DPS",
+  "anomaly-dps": "Anomaly DPS",
+  support: "Support",
 };
 
 const statLabels: Record<string, string> = {

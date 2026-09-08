@@ -68,7 +68,7 @@ export const tierSchema = z.object({
  * Роль в тир-листе — не свойство персонажа, а его место в конкретной оценке:
  * один и тот же агент может быть основным ДД в одной мете и саб-ДД в другой.
  */
-export const tierRoleSchema = z.enum(["dps", "sub-dps", "support"]);
+export const tierRoleSchema = z.enum(["pure-dps", "anomaly-dps", "support"]);
 
 export const tierEntrySchema = z.object({
   characterId: nonEmpty,

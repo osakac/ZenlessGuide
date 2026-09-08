@@ -92,7 +92,9 @@ describe("тир-лист", () => {
 
     expect(roles.length).toBeGreaterThan(0);
     expect(
-      roles.every((role) => ["dps", "sub-dps", "support"].includes(role)),
+      roles.every((role) =>
+        ["pure-dps", "anomaly-dps", "support"].includes(role),
+      ),
     ).toBe(true);
   });
 
