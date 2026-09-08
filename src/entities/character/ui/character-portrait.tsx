@@ -25,7 +25,8 @@ export function CharacterPortrait({
         fill
         sizes={sizes}
         priority={priority}
-        // Плейсхолдеры сейчас в SVG — оптимизатору изображений он не нужен.
+        // SVG оптимизатору изображений прогонять незачем: он и так векторный.
+        // Портреты персонажей — webp, они проходят обычную оптимизацию.
         unoptimized={src.endsWith(".svg")}
         className="object-cover"
       />

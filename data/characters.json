@@ -9,7 +9,7 @@
       "specialty": "attack",
       "faction": "Yunkui Summit",
       "shortDescription": "Физический ДД ближнего боя: весь урон идёт через усиленные базовые атаки, поэтому ему нужны длинные окна на цели.",
-      "image": "/images/characters/ye-shunguang.svg",
+      "image": "/images/characters/ye-shunguang.webp",
       "stats": {
         "hp": 7673,
         "atk": 938,
@@ -153,7 +153,7 @@
       "specialty": "anomaly",
       "faction": "Angels of Delusion",
       "shortDescription": "Эфирный специалист по аномалиям: стабильно навешивает эфирный статус и живёт за счёт владения аномалиями, а не крита.",
-      "image": "/images/characters/aria.svg",
+      "image": "/images/characters/aria.webp",
       "stats": {
         "hp": 7749,
         "atk": 788,
@@ -285,7 +285,7 @@
       "attribute": "lumiflux",
       "specialty": "anomaly",
       "shortDescription": "Носитель новой стихии Светопоток. Специалист по аномалиям, который в отличие от большинства собирается в первую очередь через атаку.",
-      "image": "/images/characters/remielle.svg",
+      "image": "/images/characters/remielle.webp",
       "buildGuide": {
         "engines": [
           {
@@ -402,7 +402,7 @@
       "specialty": "anomaly",
       "faction": "External Strategy Department",
       "shortDescription": "Носитель стихии Ветер. Специалист по аномалиям с высоким расходом энергии — билд заточен под частые особые приёмы.",
-      "image": "/images/characters/velina.svg",
+      "image": "/images/characters/velina.webp",
       "buildGuide": {
         "engines": [
           {
@@ -518,7 +518,7 @@
       "specialty": "stun",
       "faction": "Krampus Compliance Authority",
       "shortDescription": "Физический оглушитель, который в отличие от классических «танков дисбаланса» собирается через крит и сам заметно бьёт.",
-      "image": "/images/characters/dialyn.svg",
+      "image": "/images/characters/dialyn.webp",
       "stats": {
         "hp": 8250,
         "atk": 758,
@@ -665,7 +665,7 @@
       "specialty": "support",
       "faction": "Spook Shack",
       "shortDescription": "Поддержка с нетипичным для роли билдом: все статы вкладываются в HP, от него же зависит сила её бафов.",
-      "image": "/images/characters/lucia.svg",
+      "image": "/images/characters/lucia.webp",
       "stats": {
         "hp": 8477,
         "atk": 758,
@@ -797,7 +797,7 @@
       "specialty": "stun",
       "faction": "Angels of Delusion",
       "shortDescription": "Оглушитель, который собирается как специалист по аномалиям: набивает дисбаланс, но статы качает через владение аномалиями.",
-      "image": "/images/characters/nangong-yu.svg",
+      "image": "/images/characters/nangong-yu.webp",
       "stats": {
         "hp": 8373,
         "atk": 746,
@@ -934,7 +934,7 @@
       "specialty": "stun",
       "faction": "External Strategy Department",
       "shortDescription": "Огненный оглушитель с критовым билдом: держит дисбаланс и сам вносит заметный урон в окне.",
-      "image": "/images/characters/norma.svg",
+      "image": "/images/characters/norma.webp",
       "stats": {
         "hp": 7799,
         "atk": 762,
@@ -1090,7 +1090,7 @@
       "specialty": "support",
       "faction": "Angels of Delusion",
       "shortDescription": "Поддержка с прямым бафом атаки: простая в сборке и почти всегда полезна физическим ДД.",
-      "image": "/images/characters/sunna.svg",
+      "image": "/images/characters/sunna.webp",
       "stats": {
         "hp": 8477,
         "atk": 750,
@@ -1214,7 +1214,7 @@
       "specialty": "support",
       "faction": "Spook Shack",
       "shortDescription": "Универсальная поддержка: даёт и бонус к атаке, и мастерство аномалий, поэтому заходит и в критовые, и в аномальные составы.",
-      "image": "/images/characters/yuzuha.svg",
+      "image": "/images/characters/yuzuha.webp",
       "stats": {
         "hp": 8829,
         "atk": 758,
@@ -1356,7 +1356,7 @@
       "specialty": "rupture",
       "faction": "Yunkui Summit",
       "shortDescription": "Представитель специализации Разрушение: урон масштабируется от HP, поэтому билд собирается совсем не как у обычного ДД.",
-      "image": "/images/characters/yixuan.svg",
+      "image": "/images/characters/yixuan.webp",
       "stats": {
         "hp": 8373,
         "atk": 872,
@@ -1465,7 +1465,7 @@
       "attribute": "ice",
       "specialty": "attack",
       "shortDescription": "Ледяной ДД: весь урон в базовых атаках, а порог крит. шанса закрывается собственной способностью.",
-      "image": "/images/characters/sigrid.svg",
+      "image": "/images/characters/sigrid.webp",
       "buildGuide": {
         "engines": [
           {
@@ -1583,7 +1583,7 @@
       "specialty": "anomaly",
       "faction": "Section 6",
       "shortDescription": "Специалист по аномалиям, который собирается через крит: сочетает ледяной статус с прямым уроном базовых атак.",
-      "image": "/images/characters/miyabi.svg",
+      "image": "/images/characters/miyabi.webp",
       "stats": {
         "hp": 7673,
         "atk": 880,
@@ -1723,7 +1723,7 @@
       "specialty": "anomaly",
       "faction": "Sons of Calydon",
       "shortDescription": "Огненный специалист по аномалиям: работает с задней линии и навешивает горение, почти не требуя времени на поле.",
-      "image": "/images/characters/burnice.svg",
+      "image": "/images/characters/burnice.webp",
       "stats": {
         "hp": 7368,
         "atk": 863,
@@ -1838,7 +1838,7 @@
       "specialty": "support",
       "faction": "Stars of Lyra",
       "shortDescription": "Поддержка широкого профиля: бафает атаку почти любому ДД и хорошо держит энергию команды.",
-      "image": "/images/characters/astra-yao.svg",
+      "image": "/images/characters/astra-yao.webp",
       "stats": {
         "hp": 8609,
         "atk": 715,
@@ -1989,7 +1989,7 @@
       "specialty": "rupture",
       "faction": "Krampus Compliance Authority",
       "shortDescription": "Огненное Разрушение: урон считается от запаса HP, поэтому диски собираются совсем не как у обычного ДД.",
-      "image": "/images/characters/banyue.svg",
+      "image": "/images/characters/banyue.webp",
       "stats": {
         "hp": 8497,
         "atk": 859,
@@ -2099,7 +2099,7 @@
       "specialty": "rupture",
       "faction": "Cunning Hares",
       "shortDescription": "Альтернативная версия Билли: сменил специализацию на Разрушение и теперь масштабируется от HP, а не от атаки.",
-      "image": "/images/characters/billy-starlight.svg",
+      "image": "/images/characters/billy-starlight.webp",
       "stats": {
         "hp": 8497,
         "atk": 859,
@@ -2219,7 +2219,7 @@
       "specialty": "attack",
       "faction": "Metropolitan Order Division",
       "shortDescription": "Электрический ДД: классическая критовая сборка с упором на базовые атаки и высокий расход энергии.",
-      "image": "/images/characters/cissia.svg",
+      "image": "/images/characters/cissia.webp",
       "stats": {
         "hp": 7673,
         "atk": 938,
@@ -2339,7 +2339,7 @@
       "attribute": "ether",
       "specialty": "attack",
       "shortDescription": "Эфирный ДД с упором на цепные атаки. Порог крит. шанса закрывается бафами команды, а не статами с дисков.",
-      "image": "/images/characters/pyrois.svg",
+      "image": "/images/characters/pyrois.webp",
       "buildGuide": {
         "engines": [
           {
@@ -2454,7 +2454,7 @@
       "specialty": "attack",
       "faction": "OBOLS Squad",
       "shortDescription": "Электрический ДД с повышенным базовым крит. уроном: стартует с 78,8% вместо обычных 50%, что смещает приоритет статов.",
-      "image": "/images/characters/seed.svg",
+      "image": "/images/characters/seed.webp",
       "stats": {
         "hp": 7673,
         "atk": 929,
@@ -2592,7 +2592,7 @@
       "specialty": "rupture",
       "faction": "Spook Shack",
       "shortDescription": "Ледяное Разрушение: урон масштабируется от HP, а основная нагрузка приходится на особый приём.",
-      "image": "/images/characters/yidhari.svg",
+      "image": "/images/characters/yidhari.webp",
       "stats": {
         "hp": 8497,
         "atk": 859,
@@ -2711,7 +2711,7 @@
       "specialty": "anomaly",
       "faction": "Spook Shack",
       "shortDescription": "Физический специалист по аномалиям с очень высоким мастерством аномалий: навешивает разлом и быстро набирает срабатывания.",
-      "image": "/images/characters/alice.svg",
+      "image": "/images/characters/alice.webp",
       "stats": {
         "hp": 7673,
         "atk": 880,
@@ -2840,7 +2840,7 @@
       "specialty": "anomaly",
       "faction": "Krampus Compliance Authority",
       "shortDescription": "Ледяной специалист по аномалиям с самым высоким в списке мастерством аномалий: заточена под быстрое наложение статуса.",
-      "image": "/images/characters/promeia.svg",
+      "image": "/images/characters/promeia.webp",
       "stats": {
         "hp": 7788,
         "atk": 872,
@@ -2955,7 +2955,7 @@
       "specialty": "support",
       "faction": "Cunning Hares",
       "shortDescription": "Единственный A-ранг в верхних тирах: стягивает врагов в кучу и режет защиту, оставаясь полезной рядом с любым эфирным ДД.",
-      "image": "/images/characters/nicole-demara.svg",
+      "image": "/images/characters/nicole-demara.webp",
       "stats": {
         "hp": 8145,
         "atk": 649,
@@ -3097,7 +3097,7 @@
       "specialty": "support",
       "faction": "Victoria Housekeeping Co.",
       "shortDescription": "Электрическая поддержка с уникальным базовым пробитием брони 14,4% — единственная в списке, у кого этот стат ненулевой на старте.",
-      "image": "/images/characters/rina.svg",
+      "image": "/images/characters/rina.webp",
       "stats": {
         "hp": 8609,
         "atk": 717,
@@ -3196,7 +3196,7 @@
       "specialty": "defense",
       "faction": "Krampus Compliance Authority",
       "shortDescription": "Ледяной защитник с самым большим запасом HP в списке: прикрывает команду и конвертирует HP в поддержку урона.",
-      "image": "/images/characters/zhao.svg",
+      "image": "/images/characters/zhao.webp",
       "stats": {
         "hp": 9117,
         "atk": 765,
