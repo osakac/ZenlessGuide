@@ -147,8 +147,10 @@ export function CharacterGuide({
       {buildGuide?.teams?.length ? (
         <GuideSection title="Команды">
           <ul className="flex flex-col gap-4">
-            {buildGuide.teams.map((team) => (
-              <li key={team.name}>
+            {/* Названия команд не уникальны: у одного агента бывает две
+                «Тройные аномалии» с разным составом — ключ добирается индексом. */}
+            {buildGuide.teams.map((team, index) => (
+              <li key={`${index}-${team.name}`}>
                 <p className="font-medium">{team.name}</p>
                 <ul className="mt-1.5 flex flex-wrap gap-2">
                   {team.members.map((member) => {
