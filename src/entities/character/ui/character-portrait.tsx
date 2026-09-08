@@ -28,7 +28,7 @@ export function CharacterPortrait({
         // SVG оптимизатору изображений прогонять незачем: он и так векторный.
         // Портреты персонажей — webp, они проходят обычную оптимизацию.
         unoptimized={src.endsWith(".svg")}
-        className="object-cover"
+        className="object-cover pointer-events-none"
       />
     </div>
   );
