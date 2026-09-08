@@ -1,6 +1,5 @@
-import Link from "next/link";
+import { Suspense } from "react";
 import { notFound } from "next/navigation";
-import { ChevronLeft } from "lucide-react";
 
 import {
   AttributeBadge,
@@ -13,8 +12,10 @@ import {
   getCharacterBySlug,
   getTierForCharacter,
 } from "@/shared/api";
-import { getSpecialtyLabel, routes } from "@/shared/config";
+import { getSpecialtyLabel } from "@/shared/config";
 import { CharacterGuide } from "@/widgets/character-guide";
+
+import { BackLink, BackLinkFallback } from "./back-link";
 
 type CharacterDetailsPageProps = {
   slug: string;
@@ -42,13 +43,11 @@ export async function CharacterDetailsPage({
 
   return (
     <div className="mx-auto flex w-full max-w-6xl flex-col gap-8 px-4 py-10">
-      <Link
-        href={routes.characters}
-        className="flex w-fit items-center gap-1 text-sm text-muted-foreground hover:text-primary"
-      >
-        <ChevronLeft className="size-4" />
-        Все агенты
-      </Link>
+      {/* Ссылка назад читает query-параметр, поэтому вынесена за границу
+          Suspense — страница агента остаётся статической. */}
+      <Suspense fallback={<BackLinkFallback />}>
+        <BackLink />
+      </Suspense>
 
       <header className="flex flex-col gap-6 sm:flex-row">
         <CharacterPortrait

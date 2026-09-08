@@ -91,7 +91,7 @@ export function TierBoard({
                   <ul className="grid grid-cols-3 gap-2 sm:grid-cols-5 lg:grid-cols-3 xl:grid-cols-4">
                     {inRole.map(({ character }) => (
                       <li key={character.id} className="flex">
-                        <CharacterTile character={character} />
+                        <CharacterTile character={character} from="tierlist" />
                       </li>
                     ))}
                   </ul>

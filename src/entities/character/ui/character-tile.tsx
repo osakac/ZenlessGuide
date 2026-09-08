@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { getSpecialtyLabel, routes } from "@/shared/config";
+import { getSpecialtyLabel, routes, type BackSource } from "@/shared/config";
 import { cn } from "@/shared/lib";
 
 import type { Character } from "../model/types";
@@ -8,6 +8,8 @@ import { CharacterPortrait } from "./character-portrait";
 
 type CharacterTileProps = {
   character: Character;
+  /** Куда вернёт кнопка «назад» на странице агента. */
+  from?: BackSource;
   className?: string;
 };
 
@@ -16,10 +18,14 @@ type CharacterTileProps = {
  * В отличие от CharacterCard не показывает атрибут и специализацию —
  * в сетке из десятков агентов эти подписи превращаются в шум.
  */
-export function CharacterTile({ character, className }: CharacterTileProps) {
+export function CharacterTile({
+  character,
+  from,
+  className,
+}: CharacterTileProps) {
   return (
     <Link
-      href={routes.character(character.slug)}
+      href={routes.character(character.slug, from)}
       title={`${character.name} — ${getSpecialtyLabel(character.specialty)}`}
       className={cn("group flex w-full flex-col gap-1", className)}
     >
