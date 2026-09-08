@@ -11,7 +11,7 @@ import { ThemeToggle } from "./theme-toggle";
 const navigation = [
   { href: routes.home, label: "Главная" },
   { href: routes.tierlist, label: "Тир-лист" },
-  { href: routes.characters, label: "Персонажи" },
+  { href: routes.characters, label: "Агенты" },
 ];
 
 export function SiteHeader() {

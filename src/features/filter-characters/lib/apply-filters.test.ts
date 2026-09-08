@@ -37,7 +37,7 @@ describe("applyCharacterFilters", () => {
     expect(found.map((item) => item.id)).toEqual(["a"]);
   });
 
-  it("фильтрует по стихии, специализации и рангу", () => {
+  it("фильтрует по атрибуту, специализации и рангу", () => {
     expect(
       applyCharacterFilters(characters, {
         ...emptyFilterState,

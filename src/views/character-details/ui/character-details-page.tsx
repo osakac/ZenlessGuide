@@ -47,7 +47,7 @@ export async function CharacterDetailsPage({
         className="flex w-fit items-center gap-1 text-sm text-muted-foreground hover:text-primary"
       >
         <ChevronLeft className="size-4" />
-        Все персонажи
+        Все агенты
       </Link>
 
       <header className="flex flex-col gap-6 sm:flex-row">

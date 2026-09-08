@@ -3,9 +3,9 @@ import type { Metadata } from "next";
 import { TierListPage } from "@/views/tierlist";
 
 export const metadata: Metadata = {
-  title: "Тир-лист персонажей",
+  title: "Тир-лист агентов",
   description:
-    "Тир-лист персонажей Zenless Zone Zero с фильтрами по стихии, специализации и рангу.",
+    "Тир-лист агентов Zenless Zone Zero с фильтрами по атрибуту, специализации и рангу.",
 };
 
 export default function Page() {

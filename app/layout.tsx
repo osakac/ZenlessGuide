@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     template: "%s — ZenlessGuide",
   },
   description:
-    "Тир-лист персонажей Zenless Zone Zero и подробные гайды по билдам: оружие, диски, приоритет статов и команды.",
+    "Тир-лист агентов Zenless Zone Zero и подробные гайды по билдам: оружие, драйв-диски, приоритет статов и команды.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

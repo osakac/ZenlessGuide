@@ -36,7 +36,7 @@ export function CharacterGuide({
   if (!sections) {
     return (
       <p className="rounded-xl border border-dashed py-12 text-center text-sm text-muted-foreground">
-        Гайд по этому персонажу ещё не написан.
+        Гайд по этому агенту ещё не написан.
       </p>
     );
   }
@@ -79,7 +79,7 @@ export function CharacterGuide({
       ) : null}
 
       {buildGuide?.discs?.length ? (
-        <GuideSection title="Дисководы">
+        <GuideSection title="Драйв-диски">
           <ul className="flex flex-col gap-3">
             {buildGuide.discs.map((disc) => (
               <li key={`${disc.setName}-${disc.pieces}`} className="flex gap-3">

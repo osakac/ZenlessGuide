@@ -9,13 +9,13 @@ export default function NotFound() {
         Страница не найдена
       </h1>
       <p className="text-muted-foreground">
-        Возможно, персонажа ещё нет в базе или ссылка устарела.
+        Возможно, агента ещё нет в базе или ссылка устарела.
       </p>
       <Link
         href={routes.characters}
         className="rounded-lg border px-4 py-2 text-sm transition-colors hover:border-primary/60 hover:text-primary"
       >
-        К списку персонажей
+        К списку агентов
       </Link>
     </div>
   );

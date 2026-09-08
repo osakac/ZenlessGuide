@@ -10,7 +10,7 @@ const attributeLabels: Record<string, string> = {
   electric: "Электро",
   ether: "Эфир",
   wind: "Ветер",
-  lumiflux: "Светопоток",
+  lumiflux: "Люмен",
 };
 
 const specialtyLabels: Record<string, string> = {
@@ -57,7 +57,7 @@ export const getStatLabel = (key: string) => translate(statLabels, key);
 /** Подписи групп фильтров — используются и на списке персонажей, и в тир-листе. */
 export const filterLabels = {
   search: "Поиск по имени",
-  attribute: "Стихия",
+  attribute: "Атрибут",
   specialty: "Специализация",
   rarity: "Ранг",
   all: "Все",

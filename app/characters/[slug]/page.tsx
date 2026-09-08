@@ -20,7 +20,7 @@ export async function generateMetadata({
     title: `${character.name} — гайд и билд`,
     description:
       character.shortDescription ||
-      `Гайд по персонажу ${character.name} в Zenless Zone Zero: оружие, дисководы, статы и команды.`,
+      `Гайд по агенту ${character.name} в Zenless Zone Zero: оружие, драйв-диски, статы и команды.`,
   };
 }
 

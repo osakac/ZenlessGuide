@@ -18,7 +18,7 @@ export async function HomePage() {
         </h1>
         <p className="max-w-2xl text-muted-foreground">
           Разбираемся, кого качать и как собирать. Тир-лист показывает
-          расстановку сил, страницы персонажей — оружие, дисководы, приоритет
+          расстановку сил, страницы агентов — оружие, драйв-диски, приоритет
           статов и рабочие команды.
         </p>
       </section>
@@ -33,7 +33,7 @@ export async function HomePage() {
             <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
           </h2>
           <p className="text-sm text-muted-foreground">
-            Персонажи по тирам с фильтрами по стихии, специализации и рангу.
+            Агенты по тирам с фильтрами по атрибуту, специализации и рангу.
           </p>
         </Link>
 
@@ -42,7 +42,7 @@ export async function HomePage() {
           className="group flex flex-col gap-2 rounded-xl border bg-card p-6 transition-colors hover:border-primary/60"
         >
           <h2 className="flex items-center gap-2 text-xl font-semibold">
-            Персонажи
+            Агенты
             <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
           </h2>
           <p className="text-sm text-muted-foreground">

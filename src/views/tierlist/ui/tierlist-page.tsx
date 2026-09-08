@@ -21,7 +21,7 @@ export async function TierListPage() {
       <div className="flex flex-col gap-2">
         <h1 className="text-3xl font-semibold tracking-tight">Тир-лист</h1>
         <p className="text-muted-foreground">
-          Расстановка сил персонажей. Обновлено: {board.updatedAt}.
+          Расстановка сил агентов. Обновлено: {board.updatedAt}.
         </p>
       </div>
 
