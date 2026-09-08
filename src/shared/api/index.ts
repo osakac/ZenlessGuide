@@ -9,7 +9,7 @@ export {
 export {
   getTierBoard,
   getTierForCharacter,
-  getTierMap,
+  getTiersByCharacterId,
   type TierBoard,
   type TierBoardEntry,
   type TierGroup,

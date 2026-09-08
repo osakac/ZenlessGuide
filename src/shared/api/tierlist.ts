@@ -58,12 +58,15 @@ export async function getTierForCharacter(
   return tiers.find((tier) => tier.id === entry.tier) ?? null;
 }
 
-/** Карта «id персонажа → тир»: для списков, где тир нужен у каждой карточки. */
-export async function getTierMap(): Promise<Map<string, Tier>> {
+/**
+ * Тиры по id персонажа — для списков, где тир нужен у каждой карточки.
+ * Обычный объект, а не Map: результат уходит в клиентские компоненты.
+ */
+export async function getTiersByCharacterId(): Promise<Record<string, Tier>> {
   const { tiers, entries } = loadTierList();
   const tierById = new Map(tiers.map((tier) => [tier.id, tier]));
 
-  return new Map(
+  return Object.fromEntries(
     entries.flatMap((entry) => {
       const tier = tierById.get(entry.tier);
       return tier ? [[entry.characterId, tier] as const] : [];

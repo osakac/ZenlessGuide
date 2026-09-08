@@ -6,7 +6,11 @@ import {
   getCharacterFilterOptions,
 } from "./characters";
 import { parseCharactersFile, parseTierListFile } from "./schemas";
-import { getTierBoard, getTierForCharacter, getTierMap } from "./tierlist";
+import {
+  getTierBoard,
+  getTierForCharacter,
+  getTiersByCharacterId,
+} from "./tierlist";
 
 describe("валидация данных", () => {
   it("разбирает корректный файл персонажей", () => {
@@ -103,8 +107,9 @@ describe("тир-лист", () => {
   });
 
   it("строит карту тиров по id персонажа", async () => {
-    const map = await getTierMap();
-    expect(map.get("ellen-joe")?.id).toBe("S");
-    expect(map.get("no-such-character")).toBeUndefined();
+    const tiers = await getTiersByCharacterId();
+    expect(tiers["ellen-joe"]?.id).toBe("S");
+    expect(tiers["ben-bigger"]?.id).toBe("C");
+    expect(tiers["no-such-character"]).toBeUndefined();
   });
 });

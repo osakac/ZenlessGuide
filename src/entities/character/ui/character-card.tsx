@@ -38,10 +38,13 @@ export function CharacterCard({
           name={character.name}
           className="aspect-4/5 w-full"
         />
-        <div className="absolute top-2 left-2 flex items-center gap-1">
-          <RarityBadge rarity={character.rarity} />
-          {badge}
-        </div>
+        <RarityBadge
+          rarity={character.rarity}
+          className="absolute top-2 left-2"
+        />
+        {/* Слот разнесён с рангом по разным углам: оба бейджа короткие
+            и рядом читались бы как одно значение. */}
+        {badge ? <div className="absolute top-2 right-2">{badge}</div> : null}
       </div>
 
       <div className="flex flex-1 flex-col gap-2 p-3">
