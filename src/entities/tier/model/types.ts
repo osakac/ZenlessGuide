@@ -1,1 +1,1 @@
-export type { Tier, TierEntry } from "@/shared/api";
+export type { Tier, TierEntry, TierRole } from "@/shared/api";

@@ -13,7 +13,7 @@ import {
   getCharacterBySlug,
   getTierForCharacter,
 } from "@/shared/api";
-import { getSpecialtyLabel, getWeaponTypeLabel, routes } from "@/shared/config";
+import { getSpecialtyLabel, routes } from "@/shared/config";
 import { CharacterGuide } from "@/widgets/character-guide";
 
 type CharacterDetailsPageProps = {
@@ -77,9 +77,6 @@ export async function CharacterDetailsPage({
             <AttributeBadge attribute={character.attribute} />
             <span className="rounded-md border bg-muted px-2 py-0.5 text-xs">
               {getSpecialtyLabel(character.specialty)}
-            </span>
-            <span className="rounded-md border bg-muted px-2 py-0.5 text-xs">
-              {getWeaponTypeLabel(character.weaponType)}
             </span>
             {character.faction ? (
               <span className="rounded-md border bg-muted px-2 py-0.5 text-xs">

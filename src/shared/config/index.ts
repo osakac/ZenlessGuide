@@ -4,5 +4,5 @@ export {
   getAttributeLabel,
   getSpecialtyLabel,
   getStatLabel,
-  getWeaponTypeLabel,
+  getTierRoleLabel,
 } from "./dictionaries";

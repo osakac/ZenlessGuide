@@ -4,52 +4,160 @@
     {
       "id": "S",
       "label": "S",
-      "description": "Определяют мету: тянут состав даже без сигнатурного оружия."
+      "description": "Верхушка меты: тянут сложный контент и почти всегда окупают вложения."
     },
     {
       "id": "A",
       "label": "A",
-      "description": "Сильные персонажи, полностью закрывают свою роль в большинстве команд."
-    },
-    {
-      "id": "B",
-      "label": "B",
-      "description": "Рабочие варианты, но требуют вложений или удачной команды."
-    },
-    {
-      "id": "C",
-      "label": "C",
-      "description": "Ситуативные: качать в первую очередь не стоит."
+      "description": "Сильные агенты чуть ниже верхушки: свою роль закрывают полностью, но требовательнее к команде."
     }
   ],
   "entries": [
     {
-      "characterId": "ellen-joe",
+      "characterId": "ye-shunguang",
       "tier": "S",
-      "note": "Эталонный ДД: лучший урон в окне оглушения."
+      "role": "dps",
+      "note": "Лучший физический ДД текущей меты."
     },
     {
-      "characterId": "zhu-yuan",
+      "characterId": "aria",
       "tier": "S",
-      "note": "Максимальный урон по одиночной цели при правильной команде."
+      "role": "sub-dps"
     },
     {
-      "characterId": "lycaon",
+      "characterId": "remielle",
       "tier": "S",
-      "note": "Лучший оглушитель для ледяных команд."
+      "role": "sub-dps",
+      "note": "Носитель новой стихии Светопоток."
     },
-    { "characterId": "koleda", "tier": "A" },
     {
-      "characterId": "grace-howard",
+      "characterId": "velina",
+      "tier": "S",
+      "role": "sub-dps",
+      "note": "Носитель стихии Ветер."
+    },
+    {
+      "characterId": "dialyn",
+      "tier": "S",
+      "role": "support",
+      "note": "Оглушитель, который сам вносит серьёзный урон."
+    },
+    {
+      "characterId": "lucia",
+      "tier": "S",
+      "role": "support"
+    },
+    {
+      "characterId": "nangong-yu",
+      "tier": "S",
+      "role": "support"
+    },
+    {
+      "characterId": "norma",
+      "tier": "S",
+      "role": "support"
+    },
+    {
+      "characterId": "sunna",
+      "tier": "S",
+      "role": "support",
+      "note": "Простая в сборке поддержка почти под любой физический состав."
+    },
+    {
+      "characterId": "yuzuha",
+      "tier": "S",
+      "role": "support",
+      "note": "Подходит и критовым, и аномальным составам."
+    },
+    {
+      "characterId": "yixuan",
       "tier": "A",
-      "note": "Раскрывается в командах, построенных вокруг аномалий."
+      "role": "dps",
+      "note": "Урон масштабируется от HP — требует отдельного билда."
     },
-    { "characterId": "nekomata", "tier": "B" },
     {
-      "characterId": "anby-demara",
-      "tier": "B",
-      "note": "Лучший выбор среди A-ранга на старте."
+      "characterId": "sigrid",
+      "tier": "A",
+      "role": "dps"
     },
-    { "characterId": "ben-bigger", "tier": "C" }
+    {
+      "characterId": "banyue",
+      "tier": "A",
+      "role": "dps"
+    },
+    {
+      "characterId": "billy-starlight",
+      "tier": "A",
+      "role": "dps",
+      "note": "Разрушение вместо атаки: масштабируется от HP."
+    },
+    {
+      "characterId": "cissia",
+      "tier": "A",
+      "role": "dps"
+    },
+    {
+      "characterId": "pyrois",
+      "tier": "A",
+      "role": "dps"
+    },
+    {
+      "characterId": "seed",
+      "tier": "A",
+      "role": "dps",
+      "note": "Повышенный базовый крит. урон — 78,8% против обычных 50%."
+    },
+    {
+      "characterId": "yidhari",
+      "tier": "A",
+      "role": "dps"
+    },
+    {
+      "characterId": "miyabi",
+      "tier": "A",
+      "role": "sub-dps",
+      "note": "Долго держала верхушку тир-листа, сейчас чуть ниже."
+    },
+    {
+      "characterId": "burnice",
+      "tier": "A",
+      "role": "sub-dps",
+      "note": "Почти не требует времени на поле."
+    },
+    {
+      "characterId": "alice",
+      "tier": "A",
+      "role": "sub-dps"
+    },
+    {
+      "characterId": "promeia",
+      "tier": "A",
+      "role": "sub-dps",
+      "note": "Самое высокое мастерство аномалий в списке."
+    },
+    {
+      "characterId": "astra-yao",
+      "tier": "A",
+      "role": "support",
+      "note": "Универсальный баф атаки под большинство ДД."
+    },
+    {
+      "characterId": "nicole-demara",
+      "tier": "A",
+      "role": "support",
+      "note": "Единственный A-ранг в верхних тирах."
+    },
+    {
+      "characterId": "rina",
+      "tier": "A",
+      "role": "support",
+      "note": "Единственная с ненулевым базовым пробитием брони."
+    },
+    {
+      "characterId": "zhao",
+      "tier": "A",
+      "role": "support",
+      "note": "Самый большой запас HP в списке."
+    }
   ]
 }

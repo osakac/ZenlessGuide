@@ -29,7 +29,6 @@ export type FilterOptions = {
   attributes: string[];
   specialties: string[];
   rarities: string[];
-  weaponTypes: string[];
 };
 
 /**
@@ -45,6 +44,5 @@ export async function getCharacterFilterOptions(): Promise<FilterOptions> {
     attributes: unique(characters.map((character) => character.attribute)),
     specialties: unique(characters.map((character) => character.specialty)),
     rarities: unique(characters.map((character) => character.rarity)),
-    weaponTypes: unique(characters.map((character) => character.weaponType)),
   };
 }

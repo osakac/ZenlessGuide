@@ -8,6 +8,8 @@ const attributeStyles: Record<string, string> = {
   ice: "border-attr-ice/40 bg-attr-ice/15 text-attr-ice",
   electric: "border-attr-electric/40 bg-attr-electric/15 text-attr-electric",
   ether: "border-attr-ether/40 bg-attr-ether/15 text-attr-ether",
+  wind: "border-attr-wind/40 bg-attr-wind/15 text-attr-wind",
+  lumiflux: "border-attr-lumiflux/40 bg-attr-lumiflux/15 text-attr-lumiflux",
 };
 
 const fallback = "border-attr-default/40 bg-attr-default/15 text-attr-default";

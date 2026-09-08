@@ -1,7 +1,12 @@
 import tierListData from "@data/tierlist.json";
 
 import { once } from "../lib/once";
-import { parseTierListFile, type Character, type Tier } from "./schemas";
+import {
+  parseTierListFile,
+  type Character,
+  type Tier,
+  type TierRole,
+} from "./schemas";
 import { getAllCharacters } from "./characters";
 
 /**
@@ -13,6 +18,7 @@ const loadTierList = once(() => parseTierListFile(tierListData));
 
 export type TierBoardEntry = {
   character: Character;
+  role: TierRole;
   note?: string;
 };
 
@@ -39,7 +45,9 @@ export async function getTierBoard(): Promise<TierBoard> {
       // тир-лист и карточки наполняются независимо друг от друга.
       .flatMap((entry) => {
         const character = byId.get(entry.characterId);
-        return character ? [{ character, note: entry.note }] : [];
+        return character
+          ? [{ character, role: entry.role, note: entry.note }]
+          : [];
       }),
   }));
 

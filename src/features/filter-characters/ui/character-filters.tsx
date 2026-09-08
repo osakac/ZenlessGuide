@@ -74,7 +74,7 @@ export function CharacterFilters({
         <Input
           id="character-search"
           value={state.search}
-          placeholder="Например, Эллен"
+          placeholder="Например, Мияби"
           onChange={(event) => onChange({ search: event.target.value })}
         />
       </div>

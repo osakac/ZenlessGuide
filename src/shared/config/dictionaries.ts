@@ -9,6 +9,8 @@ const attributeLabels: Record<string, string> = {
   ice: "Лёд",
   electric: "Электро",
   ether: "Эфир",
+  wind: "Ветер",
+  lumiflux: "Светопоток",
 };
 
 const specialtyLabels: Record<string, string> = {
@@ -20,10 +22,11 @@ const specialtyLabels: Record<string, string> = {
   rupture: "Разрушение",
 };
 
-const weaponTypeLabels: Record<string, string> = {
-  slash: "Рубящий",
-  strike: "Дробящий",
-  pierce: "Колющий",
+/** Роли в тир-листе: как персонаж используется в команде. */
+const tierRoleLabels: Record<string, string> = {
+  dps: "Основной ДД",
+  "sub-dps": "Саб-ДД",
+  support: "Поддержка",
 };
 
 const statLabels: Record<string, string> = {
@@ -47,8 +50,8 @@ export const getAttributeLabel = (key: string) =>
   translate(attributeLabels, key);
 export const getSpecialtyLabel = (key: string) =>
   translate(specialtyLabels, key);
-export const getWeaponTypeLabel = (key: string) =>
-  translate(weaponTypeLabels, key);
+export const getTierRoleLabel = (key: string) =>
+  translate(tierRoleLabels, key);
 export const getStatLabel = (key: string) => translate(statLabels, key);
 
 /** Подписи групп фильтров — используются и на списке персонажей, и в тир-листе. */
@@ -57,7 +60,6 @@ export const filterLabels = {
   attribute: "Стихия",
   specialty: "Специализация",
   rarity: "Ранг",
-  weaponType: "Тип атаки",
   all: "Все",
   reset: "Сбросить",
 } as const;

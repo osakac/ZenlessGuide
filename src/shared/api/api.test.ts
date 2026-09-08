@@ -23,8 +23,7 @@ describe("валидация данных", () => {
           rarity: "S",
           attribute: "ice",
           specialty: "attack",
-          weaponType: "slash",
-          shortDescription: "",
+                  shortDescription: "",
           image: "/images/characters/test.svg",
         },
       ],
@@ -52,8 +51,8 @@ describe("персонажи", () => {
   });
 
   it("находит персонажа по slug", async () => {
-    const character = await getCharacterBySlug("ellen-joe");
-    expect(character?.name).toBe("Эллен Джо");
+    const character = await getCharacterBySlug("miyabi");
+    expect(character?.name).toBe("Мияби");
   });
 
   it("возвращает null для несуществующего slug", async () => {
@@ -82,12 +81,19 @@ describe("тир-лист", () => {
 
   it("сохраняет порядок тиров из данных", async () => {
     const board = await getTierBoard();
-    expect(board.groups.map((group) => group.tier.id)).toEqual([
-      "S",
-      "A",
-      "B",
-      "C",
-    ]);
+    expect(board.groups.map((group) => group.tier.id)).toEqual(["S", "A"]);
+  });
+
+  it("проставляет каждой записи роль из допустимого набора", async () => {
+    const board = await getTierBoard();
+    const roles = board.groups.flatMap((group) =>
+      group.entries.map((entry) => entry.role),
+    );
+
+    expect(roles.length).toBeGreaterThan(0);
+    expect(
+      roles.every((role) => ["dps", "sub-dps", "support"].includes(role)),
+    ).toBe(true);
   });
 
   it("не дублирует персонажей между тирами", async () => {
@@ -100,7 +106,7 @@ describe("тир-лист", () => {
   });
 
   it("отдаёт тир конкретного персонажа и null для неизвестного", async () => {
-    await expect(getTierForCharacter("ellen-joe")).resolves.toMatchObject({
+    await expect(getTierForCharacter("ye-shunguang")).resolves.toMatchObject({
       id: "S",
     });
     await expect(getTierForCharacter("no-such-character")).resolves.toBeNull();
@@ -108,8 +114,8 @@ describe("тир-лист", () => {
 
   it("строит карту тиров по id персонажа", async () => {
     const tiers = await getTiersByCharacterId();
-    expect(tiers["ellen-joe"]?.id).toBe("S");
-    expect(tiers["ben-bigger"]?.id).toBe("C");
+    expect(tiers["ye-shunguang"]?.id).toBe("S");
+    expect(tiers["miyabi"]?.id).toBe("A");
     expect(tiers["no-such-character"]).toBeUndefined();
   });
 });

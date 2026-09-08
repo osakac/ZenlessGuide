@@ -22,7 +22,11 @@ export function TierListContent({ groups, options }: TierListContentProps) {
     () =>
       groups.map((group) => ({
         ...group,
-        characters: applyCharacterFilters(group.characters, state),
+        // Фильтры работают по персонажу, но запись тир-листа несёт ещё и роль,
+        // поэтому фильтруем записи, а не вынутых из них персонажей.
+        entries: group.entries.filter((entry) =>
+          applyCharacterFilters([entry.character], state).length > 0,
+        ),
       })),
     [groups, state],
   );

@@ -13,7 +13,7 @@ export async function TierListPage() {
 
   const groups = board.groups.map((group) => ({
     tier: group.tier,
-    characters: group.entries.map((entry) => entry.character),
+    entries: group.entries,
   }));
 
   return (

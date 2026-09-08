@@ -12,7 +12,6 @@ const character = (overrides: Partial<Character>): Character => ({
   rarity: "S",
   attribute: "ice",
   specialty: "attack",
-  weaponType: "slash",
   shortDescription: "",
   image: "/images/characters/test.svg",
   ...overrides,

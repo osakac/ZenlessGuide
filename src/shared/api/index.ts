@@ -22,4 +22,5 @@ export {
   type Character,
   type Tier,
   type TierEntry,
+  type TierRole,
 } from "./schemas";

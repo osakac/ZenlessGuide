@@ -47,7 +47,6 @@ export const characterSchema = z.object({
   rarity: nonEmpty,
   attribute: nonEmpty,
   specialty: nonEmpty,
-  weaponType: nonEmpty,
   faction: z.string().optional(),
   shortDescription: z.string(),
   image: nonEmpty,
@@ -65,9 +64,16 @@ export const tierSchema = z.object({
   description: z.string().optional(),
 });
 
+/**
+ * Роль в тир-листе — не свойство персонажа, а его место в конкретной оценке:
+ * один и тот же агент может быть основным ДД в одной мете и саб-ДД в другой.
+ */
+export const tierRoleSchema = z.enum(["dps", "sub-dps", "support"]);
+
 export const tierEntrySchema = z.object({
   characterId: nonEmpty,
   tier: nonEmpty,
+  role: tierRoleSchema,
   note: z.string().optional(),
 });
 
@@ -80,6 +86,7 @@ export const tierListFileSchema = z.object({
 export type BuildGuide = z.infer<typeof buildGuideSchema>;
 export type Character = z.infer<typeof characterSchema>;
 export type Tier = z.infer<typeof tierSchema>;
+export type TierRole = z.infer<typeof tierRoleSchema>;
 export type TierEntry = z.infer<typeof tierEntrySchema>;
 export type CharactersFile = z.infer<typeof charactersFileSchema>;
 export type TierListFile = z.infer<typeof tierListFileSchema>;

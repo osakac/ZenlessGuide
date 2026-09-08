@@ -144,14 +144,13 @@
   --attr-ice: oklch(0.75 0.13 225);
   --attr-electric: oklch(0.58 0.22 292);
   --attr-ether: oklch(0.66 0.22 345);
+  --attr-wind: oklch(0.7 0.15 165);
+  --attr-lumiflux: oklch(0.72 0.17 105);
   --attr-default: oklch(0.6 0.02 260);
 
   /* Тиры */
   --tier-s: oklch(0.74 0.18 60);
   --tier-a: oklch(0.62 0.21 300);
-  --tier-b: oklch(0.65 0.15 230);
-  --tier-c: oklch(0.68 0.14 155);
-  --tier-d: oklch(0.6 0.02 260);
 }
 
 .dark {
@@ -172,13 +171,12 @@
   --attr-ice: oklch(0.82 0.12 225);
   --attr-electric: oklch(0.72 0.2 292);
   --attr-ether: oklch(0.75 0.2 345);
+  --attr-wind: oklch(0.8 0.14 165);
+  --attr-lumiflux: oklch(0.83 0.16 105);
   --attr-default: oklch(0.72 0.02 260);
 
   --tier-s: oklch(0.82 0.17 65);
   --tier-a: oklch(0.72 0.2 300);
-  --tier-b: oklch(0.74 0.14 230);
-  --tier-c: oklch(0.77 0.14 155);
-  --tier-d: oklch(0.72 0.02 260);
 }
 
 @theme inline {
@@ -187,11 +185,10 @@
   --color-attr-ice: var(--attr-ice);
   --color-attr-electric: var(--attr-electric);
   --color-attr-ether: var(--attr-ether);
+  --color-attr-wind: var(--attr-wind);
+  --color-attr-lumiflux: var(--attr-lumiflux);
   --color-attr-default: var(--attr-default);
 
   --color-tier-s: var(--tier-s);
   --color-tier-a: var(--tier-a);
-  --color-tier-b: var(--tier-b);
-  --color-tier-c: var(--tier-c);
-  --color-tier-d: var(--tier-d);
 }
