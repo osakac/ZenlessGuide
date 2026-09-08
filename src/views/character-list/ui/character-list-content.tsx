@@ -3,7 +3,6 @@
 import { useMemo } from "react";
 
 import type { Character } from "@/entities/character";
-import type { Tier } from "@/entities/tier";
 import {
   applyCharacterFilters,
   CharacterFilters,
@@ -14,13 +13,11 @@ import { CharacterCardGrid } from "@/widgets/character-card-grid";
 
 type CharacterListContentProps = {
   characters: Character[];
-  tiers: Record<string, Tier>;
   options: CharacterFilterOptions;
 };
 
 export function CharacterListContent({
   characters,
-  tiers,
   options,
 }: CharacterListContentProps) {
   const { state, setState, reset } = useCharacterFilters();
@@ -43,7 +40,7 @@ export function CharacterListContent({
         Найдено: {visible.length} из {characters.length}
       </p>
 
-      <CharacterCardGrid characters={visible} tiers={tiers} />
+      <CharacterCardGrid characters={visible} />
     </>
   );
 }

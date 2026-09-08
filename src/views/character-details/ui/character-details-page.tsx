@@ -60,16 +60,20 @@ export async function CharacterDetailsPage({
         />
 
         <div className="flex flex-col gap-4">
-          <div className="flex flex-wrap items-center gap-2">
-            <h1 className="text-3xl font-semibold tracking-tight">
-              {character.name}
-            </h1>
-            <RarityBadge rarity={character.rarity} />
+          <h1 className="text-3xl font-semibold tracking-tight">
+            {character.name}
+          </h1>
+
+          <div className="flex flex-col gap-2">
+            <div className="flex items-center gap-2 text-sm text-muted-foreground">
+              Редкость
+              <RarityBadge rarity={character.rarity} />
+            </div>
             {tier ? (
-              <span className="flex items-center gap-1.5 text-sm text-muted-foreground">
-                тир
+              <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                Тир
                 <TierBadge tierId={tier.id} label={tier.label} />
-              </span>
+              </div>
             ) : null}
           </div>
 

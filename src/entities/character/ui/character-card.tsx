@@ -1,5 +1,4 @@
 import Link from "next/link";
-import type { ReactNode } from "react";
 
 import { getSpecialtyLabel, routes } from "@/shared/config";
 import { cn } from "@/shared/lib";
@@ -7,23 +6,13 @@ import { cn } from "@/shared/lib";
 import type { Character } from "../model/types";
 import { AttributeBadge } from "./attribute-badge";
 import { CharacterPortrait } from "./character-portrait";
-import { RarityBadge } from "./rarity-badge";
 
 type CharacterCardProps = {
   character: Character;
-  /**
-   * Слот для бейджа поверх портрета. Через него виджеты добавляют тир:
-   * сущность character не должна знать про сущность tier.
-   */
-  badge?: ReactNode;
   className?: string;
 };
 
-export function CharacterCard({
-  character,
-  badge,
-  className,
-}: CharacterCardProps) {
+export function CharacterCard({ character, className }: CharacterCardProps) {
   return (
     <Link
       href={routes.character(character.slug)}
@@ -32,23 +21,14 @@ export function CharacterCard({
         className,
       )}
     >
-      <div className="relative">
-        <CharacterPortrait
-          src={character.image}
-          name={character.name}
-          className="aspect-4/5 w-full"
-        />
-        <RarityBadge
-          rarity={character.rarity}
-          className="absolute top-2 left-2"
-        />
-        {/* Слот разнесён с рангом по разным углам: оба бейджа короткие
-            и рядом читались бы как одно значение. */}
-        {badge ? <div className="absolute top-2 right-2">{badge}</div> : null}
-      </div>
+      <CharacterPortrait
+        src={character.image}
+        name={character.name}
+        className="aspect-4/5 w-full"
+      />
 
       <div className="flex flex-1 flex-col gap-2 p-3">
-        <h3 className="font-semibold group-hover:text-primary">
+        <h3 className="min-w-0 font-semibold group-hover:text-primary">
           {character.name}
         </h3>
         <div className="flex flex-wrap items-center gap-1.5">
