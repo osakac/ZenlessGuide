@@ -67,11 +67,6 @@ export function TierBoard({
         >
           <div className="flex items-center gap-3 border-b bg-card/60 p-3 lg:flex-col lg:items-start lg:gap-2 lg:border-b-0 lg:bg-transparent lg:p-0">
             <TierBadge tierId={tier.id} label={tier.label} size="lg" />
-            {tier.description ? (
-              <p className="text-xs leading-snug text-muted-foreground">
-                {tier.description}
-              </p>
-            ) : null}
           </div>
 
           {roleOrder.map((role) => {

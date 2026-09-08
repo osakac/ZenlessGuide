@@ -61,7 +61,6 @@ export const charactersFileSchema = z.object({
 export const tierSchema = z.object({
   id: nonEmpty,
   label: nonEmpty,
-  description: z.string().optional(),
 });
 
 /**

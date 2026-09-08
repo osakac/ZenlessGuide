@@ -94,12 +94,6 @@ export async function CharacterDetailsPage({
               {character.shortDescription}
             </p>
           ) : null}
-
-          {tier?.description ? (
-            <p className="max-w-2xl rounded-lg border bg-card p-3 text-sm text-muted-foreground">
-              {tier.description}
-            </p>
-          ) : null}
         </div>
       </header>
 
