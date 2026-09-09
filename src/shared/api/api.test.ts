@@ -1,11 +1,16 @@
-import { describe, expect, it } from "vitest";
+import { afterEach, describe, expect, it, vi } from "vitest";
 
 import {
   getAllCharacters,
   getCharacterBySlug,
   getCharacterFilterOptions,
 } from "./characters";
-import { parseCharactersFile, parseTierListFile } from "./schemas";
+import {
+  parseCharactersFile,
+  parseTeamsFile,
+  parseTierListFile,
+} from "./schemas";
+import { getTeamsForCharacter } from "./teams";
 import {
   getTierBoard,
   getTierForCharacter,
@@ -119,5 +124,117 @@ describe("тир-лист", () => {
     expect(tiers["ye-shunguang"]?.id).toBe("S");
     expect(tiers["miyabi"]?.id).toBe("A");
     expect(tiers["no-such-character"]).toBeUndefined();
+  });
+});
+
+describe("команды", () => {
+  const validTeam = {
+    name: "Тестовый состав",
+    members: ["miyabi", "ye-shunguang", "norma"],
+  };
+
+  /**
+   * Составы подменяются на тестовые: реальный `teams.json` наполняется
+   * пользователем и может быть пустым, а проверять нужно саму связь.
+   */
+  async function withTeams(teams: unknown[]) {
+    vi.resetModules();
+    vi.doMock("@data/teams.json", () => ({ default: { teams } }));
+    return import("./teams");
+  }
+
+  afterEach(() => {
+    vi.doUnmock("@data/teams.json");
+    vi.resetModules();
+  });
+
+  it("разбирает состав из трёх агентов", () => {
+    expect(parseTeamsFile({ teams: [validTeam] }).teams).toHaveLength(1);
+  });
+
+  it("не принимает состав, в котором не три агента", () => {
+    expect(() =>
+      parseTeamsFile({ teams: [{ ...validTeam, members: ["miyabi", "norma"] }] }),
+    ).toThrowError(/data\/teams\.json/);
+
+    expect(() =>
+      parseTeamsFile({
+        teams: [
+          { ...validTeam, members: [...validTeam.members, "remielle"] },
+        ],
+      }),
+    ).toThrowError(/ровно из трёх/);
+  });
+
+  it("не принимает одного агента дважды в одном составе", () => {
+    expect(() =>
+      parseTeamsFile({
+        teams: [{ ...validTeam, members: ["miyabi", "miyabi", "norma"] }],
+      }),
+    ).toThrowError(/два места/);
+  });
+
+  it("не принимает два состава с одинаковым набором агентов", () => {
+    expect(() =>
+      parseTeamsFile({
+        teams: [
+          validTeam,
+          { ...validTeam, name: "Тот же состав", members: ["norma", "miyabi", "ye-shunguang"] },
+        ],
+      }),
+    ).toThrowError(/больше одного раза/);
+  });
+
+  it("показывает состав каждому его участнику", async () => {
+    const { getTeamsForCharacter } = await withTeams([validTeam]);
+
+    for (const memberId of validTeam.members) {
+      const teams = await getTeamsForCharacter(memberId);
+
+      expect(teams).toHaveLength(1);
+      expect(teams[0].name).toBe(validTeam.name);
+      expect(teams[0].members.map((member) => member.id)).toEqual(
+        validTeam.members,
+      );
+    }
+  });
+
+  it("не показывает состав постороннему агенту", async () => {
+    const { getTeamsForCharacter } = await withTeams([validTeam]);
+    await expect(getTeamsForCharacter("remielle")).resolves.toEqual([]);
+  });
+
+  it("резолвит участников в имя, slug и портрет", async () => {
+    const { getTeamsForCharacter } = await withTeams([validTeam]);
+    const [team] = await getTeamsForCharacter("miyabi");
+
+    expect(team.members[0]).toMatchObject({ id: "miyabi", name: "Мияби" });
+    expect(team.members.every((member) => Boolean(member.slug && member.image))).toBe(
+      true,
+    );
+  });
+
+  it("падает на составе со ссылкой на несуществующего агента", async () => {
+    const { getTeamsForCharacter } = await withTeams([
+      { ...validTeam, members: ["miyabi", "norma", "no-such-character"] },
+    ]);
+
+    await expect(getTeamsForCharacter("miyabi")).rejects.toThrowError(
+      /no-such-character/,
+    );
+  });
+
+  it("в реальных данных все участники составов существуют", async () => {
+    const characters = await getAllCharacters();
+    const ids = new Set(characters.map((character) => character.id));
+
+    for (const character of characters) {
+      const teams = await getTeamsForCharacter(character.id);
+
+      for (const team of teams) {
+        expect(team.members).toHaveLength(3);
+        expect(team.members.every((member) => ids.has(member.id))).toBe(true);
+      }
+    }
   });
 });

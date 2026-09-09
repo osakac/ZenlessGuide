@@ -19,7 +19,7 @@
 | Архитектура фронтенда | Feature-Sliced Design (FSD) — строго соблюдается, см. раздел 3 |
 | UI-библиотека компонентов | shadcn/ui (Radix UI + Tailwind CSS) |
 | Стилизация | Tailwind CSS |
-| Данные | Локальные JSON-файлы (`/data/characters.json`, `/data/tierlist.json`) |
+| Данные | Локальные JSON-файлы (`/data/characters.json`, `/data/teams.json`, `/data/tierlist.json`) |
 | Деплой | Не зафиксирован; напрашивается Vercel (стандарт для Next.js) |
 
 **Важно:** доступ к данным инкапсулируется в отдельном модуле уровня `shared` (см. FSD ниже), а не разбросан по компонентам напрямую. Это позволит в будущем заменить JSON-файлы на настоящую БД (Postgres/SQLite + ORM), не переписывая страницы и компоненты.
@@ -70,6 +70,14 @@ type TierEntry = {
   characterId: string;
   tier: string;                          // S / A
   role: "pure-dps" | "anomaly-dps" | "support"; // колонка в сетке тир-листа
+};
+
+// Команда — отдельная запись, а не поле агента: связь выводится из состава,
+// поэтому один состав показывается на страницах всех трёх участников.
+type Team = {
+  name: string;
+  members: [string, string, string]; // id агентов, отряд всегда из троих
+  note?: string;
 };
 ```
 

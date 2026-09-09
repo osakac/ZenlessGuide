@@ -7,6 +7,12 @@ export {
 } from "./characters";
 
 export {
+  getTeamsForCharacter,
+  type Team,
+  type TeamMember,
+} from "./teams";
+
+export {
   getTierBoard,
   getTierForCharacter,
   getTiersByCharacterId,
@@ -17,6 +23,7 @@ export {
 
 export {
   parseCharactersFile,
+  parseTeamsFile,
   parseTierListFile,
   type BuildGuide,
   type Character,

@@ -1,14 +1,14 @@
-import Link from "next/link";
-
 import type { Character } from "@/entities/character";
-import { getStatLabel, routes } from "@/shared/config";
+import type { Team } from "@/shared/api";
+import { getStatLabel } from "@/shared/config";
 
 import { GuideSection } from "./guide-section";
+import { TeamCard } from "./team-card";
 
 type CharacterGuideProps = {
   character: Character;
-  /** Имя персонажа → slug: по нему состав команд превращается в ссылки. */
-  linkableCharacters?: Record<string, string>;
+  /** Составы, в которых участвует агент: приходят из общего списка команд. */
+  teams?: Team[];
 };
 
 /**
@@ -16,10 +16,7 @@ type CharacterGuideProps = {
  * гайды наполняются постепенно, и полупустая страница не должна
  * показывать заголовки без содержимого.
  */
-export function CharacterGuide({
-  character,
-  linkableCharacters = {},
-}: CharacterGuideProps) {
+export function CharacterGuide({ character, teams = [] }: CharacterGuideProps) {
   const { stats, buildGuide } = character;
   const hasStats = stats && Object.keys(stats).length > 0;
 
@@ -29,7 +26,7 @@ export function CharacterGuide({
     buildGuide?.discs?.length,
     buildGuide?.mainStats?.length || buildGuide?.subStats?.length,
     buildGuide?.skillPriority?.length,
-    buildGuide?.teams?.length,
+    teams.length,
     buildGuide?.tips?.length,
   ].some(Boolean);
 
@@ -144,41 +141,15 @@ export function CharacterGuide({
         </GuideSection>
       ) : null}
 
-      {buildGuide?.teams?.length ? (
+      {teams.length ? (
         <GuideSection title="Команды">
-          <ul className="flex flex-col gap-4">
-            {/* Названия команд не уникальны: у одного агента бывает две
-                «Тройные аномалии» с разным составом — ключ добирается индексом. */}
-            {buildGuide.teams.map((team, index) => (
-              <li key={`${index}-${team.name}`}>
-                <p className="font-medium">{team.name}</p>
-                <ul className="mt-1.5 flex flex-wrap gap-2">
-                  {team.members.map((member) => {
-                    const slug = linkableCharacters[member];
-
-                    return (
-                      <li key={member}>
-                        {slug ? (
-                          <Link
-                            href={routes.character(slug)}
-                            className="rounded-md border bg-muted px-2 py-1 text-sm hover:border-primary/60 hover:text-primary"
-                          >
-                            {member}
-                          </Link>
-                        ) : (
-                          <span className="rounded-md border border-dashed px-2 py-1 text-sm text-muted-foreground">
-                            {member}
-                          </span>
-                        )}
-                      </li>
-                    );
-                  })}
-                </ul>
-                {team.note ? (
-                  <p className="mt-1.5 text-sm text-muted-foreground">
-                    {team.note}
-                  </p>
-                ) : null}
+          <ul className="grid gap-3 sm:grid-cols-2">
+            {/* Названия составов не уникальны — у одного агента бывает две
+                «Тройные аномалии» с разным составом, — а вот набор участников
+                уникален по схеме данных, он и служит ключом. */}
+            {teams.map((team) => (
+              <li key={team.members.map((member) => member.id).join("|")}>
+                <TeamCard team={team} currentCharacterId={character.id} />
               </li>
             ))}
           </ul>

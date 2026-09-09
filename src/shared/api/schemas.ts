@@ -28,15 +28,6 @@ export const buildGuideSchema = z.object({
     .optional(),
   subStats: z.array(nonEmpty).optional(),
   skillPriority: z.array(nonEmpty).optional(),
-  teams: z
-    .array(
-      z.object({
-        name: nonEmpty,
-        members: z.array(nonEmpty),
-        note: z.string().optional(),
-      }),
-    )
-    .optional(),
   tips: z.array(nonEmpty).optional(),
 });
 
@@ -56,6 +47,38 @@ export const characterSchema = z.object({
 
 export const charactersFileSchema = z.object({
   characters: z.array(characterSchema),
+});
+
+/**
+ * Команда — самостоятельная запись, а не поле агента: состав симметричен,
+ * и хранить его у каждого участника значило бы трижды дублировать одно и то же.
+ * Связь «агент ↔ команда» выводится из `members`, отдельного id у состава нет —
+ * набор участников сам по себе уникален.
+ */
+export const teamSchema = z.object({
+  name: nonEmpty,
+  members: z
+    .array(nonEmpty)
+    // Отряд в ZZZ всегда состоит ровно из трёх агентов — это не соглашение
+    // данных, а правило игры, поэтому длина фиксированная.
+    .length(3, "команда состоит ровно из трёх агентов")
+    .refine(
+      (members) => new Set(members).size === members.length,
+      "агент не может занимать в команде два места",
+    ),
+  note: z.string().optional(),
+});
+
+/** Ключ состава — набор участников без учёта порядка. */
+const teamKey = (members: string[]) => [...members].sort().join("|");
+
+export const teamsFileSchema = z.object({
+  teams: z
+    .array(teamSchema)
+    .refine(
+      (teams) => new Set(teams.map((team) => teamKey(team.members))).size === teams.length,
+      "один и тот же набор агентов описан больше одного раза",
+    ),
 });
 
 export const tierSchema = z.object({
@@ -84,10 +107,12 @@ export const tierListFileSchema = z.object({
 
 export type BuildGuide = z.infer<typeof buildGuideSchema>;
 export type Character = z.infer<typeof characterSchema>;
+export type TeamRecord = z.infer<typeof teamSchema>;
 export type Tier = z.infer<typeof tierSchema>;
 export type TierRole = z.infer<typeof tierRoleSchema>;
 export type TierEntry = z.infer<typeof tierEntrySchema>;
 export type CharactersFile = z.infer<typeof charactersFileSchema>;
+export type TeamsFile = z.infer<typeof teamsFileSchema>;
 export type TierListFile = z.infer<typeof tierListFileSchema>;
 
 /** Разбирает результат валидации, превращая ошибку zod в читаемое сообщение. */
@@ -107,6 +132,10 @@ function parseOrThrow<T>(schema: z.ZodType<T>, raw: unknown, source: string): T 
 
 export function parseCharactersFile(raw: unknown): CharactersFile {
   return parseOrThrow(charactersFileSchema, raw, "data/characters.json");
+}
+
+export function parseTeamsFile(raw: unknown): TeamsFile {
+  return parseOrThrow(teamsFileSchema, raw, "data/teams.json");
 }
 
 export function parseTierListFile(raw: unknown): TierListFile {

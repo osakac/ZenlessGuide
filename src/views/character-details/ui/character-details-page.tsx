@@ -8,8 +8,8 @@ import {
 } from "@/entities/character";
 import { TierBadge } from "@/entities/tier";
 import {
-  getAllCharacters,
   getCharacterBySlug,
+  getTeamsForCharacter,
   getTierForCharacter,
 } from "@/shared/api";
 import { getSpecialtyLabel } from "@/shared/config";
@@ -28,18 +28,10 @@ export async function CharacterDetailsPage({
 
   if (!character) notFound();
 
-  const [tier, allCharacters] = await Promise.all([
+  const [tier, teams] = await Promise.all([
     getTierForCharacter(character.id),
-    getAllCharacters(),
+    getTeamsForCharacter(character.id),
   ]);
-
-  // Состав команд задан именами: связываем их со страницами тех,
-  // кто уже есть в данных.
-  const linkableCharacters = Object.fromEntries(
-    allCharacters
-      .filter((item) => item.slug !== character.slug)
-      .map((item) => [item.name, item.slug]),
-  );
 
   return (
     <div className="mx-auto flex w-full max-w-6xl flex-col gap-8 px-4 py-10">
@@ -96,10 +88,7 @@ export async function CharacterDetailsPage({
         </div>
       </header>
 
-      <CharacterGuide
-        character={character}
-        linkableCharacters={linkableCharacters}
-      />
+      <CharacterGuide character={character} teams={teams} />
     </div>
   );
 }

@@ -25,7 +25,7 @@ Next.js 16 (App Router) + TypeScript, Tailwind v4, shadcn/ui на Radix, `next-t
 | `/`                  | Описание, ссылки на разделы, блок «Верхний тир»                  |
 | `/tierlist`          | Тиры × колонки ролей (Pure DPS / Anomaly DPS / Support), фильтры |
 | `/characters`        | Все агенты карточками, те же фильтры                             |
-| `/characters/[slug]` | Портрет, бейджи, билд-гайд, команды со ссылками на напарников    |
+| `/characters/[slug]` | Портрет, бейджи, билд-гайд, команды с портретами напарников       |
 | 404                  | `app/not-found.tsx`                                              |
 
 - Виджеты: `tier-board`, `character-card-grid`, `character-guide`, `header`, `footer`.
@@ -37,6 +37,7 @@ Next.js 16 (App Router) + TypeScript, Tailwind v4, shadcn/ui на Radix, `next-t
 
 - Заведено 26 агентов: тир S — 10, тир A — 16.
 - Портреты лежат в `public/images/characters/`.
+- Команды переехали в `data/teams.json` (участники по `id`, ровно трое) и заводятся заново — старые составы удалены вместе с полем `buildGuide.teams`.
 
 Порядок добавления агента — в [data/README.md](../data/README.md); код при этом не меняется.
 
