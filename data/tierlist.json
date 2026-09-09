@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-08",
+  "updatedAt": "2026-09-09",
   "tiers": [
     {
       "id": "S",
@@ -16,6 +16,12 @@
       "tier": "S",
       "role": "pure-dps",
       "note": "Лучший физический ДД текущей меты."
+    },
+    {
+      "characterId": "claret",
+      "tier": "S",
+      "role": "pure-dps",
+      "note": "Первый оружейник — новый класс с уроном от защиты."
     },
     {
       "characterId": "aria",

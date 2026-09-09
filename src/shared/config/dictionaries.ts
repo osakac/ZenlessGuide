@@ -20,6 +20,7 @@ const specialtyLabels: Record<string, string> = {
   support: "Поддержка",
   defense: "Защита",
   rupture: "Разрушение",
+  armorer: "Оружейник",
 };
 
 /** Роли в тир-листе: как персонаж используется в команде. */

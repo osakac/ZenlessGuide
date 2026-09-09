@@ -98,6 +98,104 @@
       }
     },
     {
+      "id": "claret",
+      "slug": "claret",
+      "name": "Кларет",
+      "rarity": "S",
+      "attribute": "electric",
+      "specialty": "armorer",
+      "shortDescription": "Первый агент класса оружейников: бьёт от защиты, копит на враге порезы и сама же их вскрывает.",
+      "image": "/images/characters/claret.webp",
+      "stats": {
+        "hp": 5651,
+        "atk": 626,
+        "def": 441,
+        "impact": 93,
+        "critRate": "33.8%",
+        "critDmg": "50%",
+        "penRatio": "0%",
+        "anomalyMastery": 80,
+        "anomalyProficiency": 79,
+        "energyRegen": 1.5
+      },
+      "buildGuide": {
+        "engines": [
+          {
+            "name": "Crimson Thirst",
+            "note": "Сигнатурное оружие, вне конкуренции."
+          },
+          {
+            "name": "Bloodmarrow Coffer",
+            "note": "Награда боевого пропуска."
+          },
+          {
+            "name": "Catty Luck",
+            "note": "Крафтовая альтернатива через защиту."
+          }
+        ],
+        "discs": [
+          {
+            "setName": "Thorned Rose",
+            "pieces": 4,
+            "note": "Основной сет, сделан под оружейников."
+          },
+          {
+            "setName": "Puffer Electro",
+            "pieces": 2,
+            "note": "Лучшая двойка в командах с Риной."
+          },
+          {
+            "setName": "Woodpecker Electro",
+            "pieces": 2
+          },
+          {
+            "setName": "Soul Rock",
+            "pieces": 2
+          },
+          {
+            "setName": "Thunder Metal",
+            "pieces": 2
+          },
+          {
+            "setName": "Branch & Blade Song",
+            "pieces": 2
+          }
+        ],
+        "mainStats": [
+          {
+            "slot": "Диск 4",
+            "stat": "Крит. шанс %"
+          },
+          {
+            "slot": "Диск 5",
+            "stat": "Пробитие брони %"
+          },
+          {
+            "slot": "Диск 6",
+            "stat": "Защита %"
+          }
+        ],
+        "subStats": [
+          "Крит. шанс",
+          "Защита %",
+          "Крит. урон",
+          "Пробитие брони",
+          "Защита"
+        ],
+        "skillPriority": [
+          "Особый приём",
+          "Цепная атака",
+          "Базовая атака",
+          "Помощь",
+          "Уклонение"
+        ],
+        "tips": [
+          "Урон считается от защиты, а не от атаки — статы атаки ей бесполезны.",
+          "Крит. урон пересчитывается в крит. шанс, поэтому крит. шанса много не бывает: цель — около 200% с учётом баффов команды."
+        ]
+      }
+    },
+    {
       "id": "aria",
       "slug": "aria",
       "name": "Ария",
