@@ -1,11 +1,7 @@
 import { Suspense } from "react";
 import { notFound } from "next/navigation";
 
-import {
-  AttributeBadge,
-  CharacterPortrait,
-  RarityBadge,
-} from "@/entities/character";
+import { AttributeBadge, RarityBadge } from "@/entities/character";
 import { TierBadge } from "@/entities/tier";
 import {
   getCharacterBySlug,
@@ -13,6 +9,7 @@ import {
   getTierForCharacter,
 } from "@/shared/api";
 import { getSpecialtyLabel } from "@/shared/config";
+import { Portrait } from "@/shared/ui/portrait";
 import { CharacterGuide } from "@/widgets/character-guide";
 
 import { BackLink, BackLinkFallback } from "./back-link";
@@ -42,9 +39,9 @@ export async function CharacterDetailsPage({
       </Suspense>
 
       <header className="flex flex-col gap-6 sm:flex-row">
-        <CharacterPortrait
+        <Portrait
           src={character.image}
-          name={character.name}
+          alt={character.name}
           priority
           sizes="(max-width: 640px) 100vw, 280px"
           className="aspect-4/5 w-full shrink-0 rounded-xl sm:w-64"

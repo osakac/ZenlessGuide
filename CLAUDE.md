@@ -22,9 +22,9 @@
 |---|---|
 | `app` | Провайдеры, глобальные стили |
 | `views` | Композиция страниц (в терминах FSD это слой `pages`; переименован, т.к. `pages` зарезервировано Next.js) |
-| `widgets` | Крупные самостоятельные блоки: `tier-board`, `character-card-grid`, `character-guide`, `header`, `footer` |
+| `widgets` | Крупные самостоятельные блоки: `tier-board`, `character-card-grid`, `character-guide`, `team-grid`, `header`, `footer` |
 | `features` | Пользовательские сценарии: `filter-characters` |
-| `entities` | Бизнес-сущности: `character`, `tier` — модели и их отображение |
+| `entities` | Бизнес-сущности: `character`, `team`, `tier` — модели и их отображение |
 | `shared` | Без привязки к домену: `ui` (shadcn/ui), `api` (доступ к данным), `lib`, `config` |
 
 Правила:

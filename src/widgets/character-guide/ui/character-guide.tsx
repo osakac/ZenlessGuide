@@ -1,9 +1,8 @@
 import type { Character } from "@/entities/character";
-import type { Team } from "@/shared/api";
+import { TeamCard, type Team } from "@/entities/team";
 import { getStatLabel } from "@/shared/config";
 
 import { GuideSection } from "./guide-section";
-import { TeamCard } from "./team-card";
 
 type CharacterGuideProps = {
   character: Character;

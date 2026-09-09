@@ -1,21 +1,25 @@
 import Link from "next/link";
 
-import { CharacterPortrait } from "@/entities/character";
+import { Portrait } from "@/shared/ui/portrait";
 import { routes } from "@/shared/config";
-import type { Team, TeamMember } from "@/shared/api";
 import { cn } from "@/shared/lib";
+
+import type { Team, TeamMember } from "../model/types";
 
 type TeamCardProps = {
   team: Team;
-  /** Агент, на чьей странице показан состав: он же не ссылается сам на себя. */
-  currentCharacterId: string;
+  /**
+   * Агент, на чьей странице показан состав: он же не ссылается сам на себя.
+   * В общем списке команд текущего агента нет, и ссылками становятся все трое.
+   */
+  currentCharacterId?: string;
 };
 
 function MemberPortrait({ member }: { member: TeamMember }) {
   return (
-    <CharacterPortrait
+    <Portrait
       src={member.image}
-      name={member.name}
+      alt={member.name}
       sizes="(max-width: 640px) 28vw, 120px"
       className="aspect-4/5 w-full rounded-lg border transition-colors group-hover:border-primary/60"
     />
@@ -33,9 +37,9 @@ export function TeamCard({ team, currentCharacterId }: TeamCardProps) {
             <li key={member.id} className="min-w-0">
               {isCurrent ? (
                 <div className="flex flex-col gap-1">
-                  <CharacterPortrait
+                  <Portrait
                     src={member.image}
-                    name={member.name}
+                    alt={member.name}
                     sizes="(max-width: 640px) 28vw, 120px"
                     className="aspect-4/5 w-full rounded-lg border-2 border-primary"
                   />

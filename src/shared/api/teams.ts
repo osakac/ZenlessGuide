@@ -1,7 +1,7 @@
 import teamsData from "@data/teams.json";
 
 import { once } from "../lib/once";
-import { parseTeamsFile, type Character } from "./schemas";
+import { parseTeamsFile, type Character, type TeamRecord } from "./schemas";
 import { getAllCharacters } from "./characters";
 
 /**
@@ -21,38 +21,47 @@ export type Team = {
 };
 
 /**
- * Составы, в которых участвует агент. Порядок участников — авторский,
- * из данных: он несёт смысл (основной ДД первым).
+ * Разворачивает id участников в то, что нужно для портрета и ссылки.
+ * Порядок участников — авторский, из данных: он несёт смысл (основной ДД первым).
  */
-export async function getTeamsForCharacter(
-  characterId: string,
-): Promise<Team[]> {
-  const teams = loadTeams();
+async function resolveTeams(records: TeamRecord[]): Promise<Team[]> {
   const characters = await getAllCharacters();
   const byId = new Map(characters.map((character) => [character.id, character]));
 
-  return teams
-    .filter((team) => team.members.includes(characterId))
-    .map((team) => ({
-      members: team.members.map((memberId) => {
-        const character = byId.get(memberId);
+  return records.map((team) => ({
+    members: team.members.map((memberId) => {
+      const character = byId.get(memberId);
 
-        // В отличие от тир-листа, где запись на несуществующего агента просто
-        // пропускается, здесь это ошибка: состав из двух участников — уже не
-        // команда, а ссылка в никуда. Страницы агентов статические, так что
-        // опечатка в id падает на сборке, а не тихо портит страницу.
-        if (!character) {
-          throw new Error(
-            `Состав ${team.members.join(" + ")} ссылается на неизвестного агента: ${memberId}`,
-          );
-        }
+      // В отличие от тир-листа, где запись на несуществующего агента просто
+      // пропускается, здесь это ошибка: состав из двух участников — уже не
+      // команда, а ссылка в никуда. Страницы агентов статические, так что
+      // опечатка в id падает на сборке, а не тихо портит страницу.
+      if (!character) {
+        throw new Error(
+          `Состав ${team.members.join(" + ")} ссылается на неизвестного агента: ${memberId}`,
+        );
+      }
 
-        return {
-          id: character.id,
-          name: character.name,
-          slug: character.slug,
-          image: character.image,
-        };
-      }),
-    }));
+      return {
+        id: character.id,
+        name: character.name,
+        slug: character.slug,
+        image: character.image,
+      };
+    }),
+  }));
+}
+
+/** Все составы — в том порядке, в каком они лежат в данных. */
+export async function getAllTeams(): Promise<Team[]> {
+  return resolveTeams(loadTeams());
+}
+
+/** Составы, в которых участвует агент. */
+export async function getTeamsForCharacter(
+  characterId: string,
+): Promise<Team[]> {
+  return resolveTeams(
+    loadTeams().filter((team) => team.members.includes(characterId)),
+  );
 }

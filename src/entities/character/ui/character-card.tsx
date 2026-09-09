@@ -5,7 +5,7 @@ import { cn } from "@/shared/lib";
 
 import type { Character } from "../model/types";
 import { AttributeBadge } from "./attribute-badge";
-import { CharacterPortrait } from "./character-portrait";
+import { Portrait } from "@/shared/ui/portrait";
 
 type CharacterCardProps = {
   character: Character;
@@ -21,9 +21,9 @@ export function CharacterCard({ character, className }: CharacterCardProps) {
         className,
       )}
     >
-      <CharacterPortrait
+      <Portrait
         src={character.image}
-        name={character.name}
+        alt={character.name}
         className="aspect-4/5 w-full"
       />
 

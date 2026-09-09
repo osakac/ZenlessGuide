@@ -26,10 +26,11 @@ Next.js 16 (App Router) + TypeScript, Tailwind v4, shadcn/ui на Radix, `next-t
 | `/tierlist`          | Тиры × колонки ролей (Pure DPS / Anomaly DPS / Support), фильтры |
 | `/characters`        | Все агенты карточками, те же фильтры                             |
 | `/characters/[slug]` | Портрет, бейджи, билд-гайд, команды с портретами напарников       |
+| `/teams`             | Все составы команд одним списком                                 |
 | 404                  | `app/not-found.tsx`                                              |
 
-- Виджеты: `tier-board`, `character-card-grid`, `character-guide`, `header`, `footer`.
-- Сущности: `character` (карточка, плитка, портрет, бейджи), `tier` (бейдж).
+- Виджеты: `tier-board`, `character-card-grid`, `character-guide`, `team-grid`, `header`, `footer`.
+- Сущности: `character` (карточка, плитка, бейджи), `team` (карточка состава), `tier` (бейдж).
 - Фича `filter-characters`: поиск, атрибут, специализация, ранг.
 - SEO: метаданные на каждом маршруте, `generateStaticParams` для страниц агентов.
 

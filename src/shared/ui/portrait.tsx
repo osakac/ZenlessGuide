@@ -2,26 +2,33 @@ import Image from "next/image";
 
 import { cn } from "@/shared/lib";
 
-type CharacterPortraitProps = {
+/**
+ * Картинка, растянутая по контейнеру: рамку, скругление и пропорции
+ * задаёт вызывающая сторона через className. Лежит в shared, потому что
+ * нужна и карточке агента, и составу команды — а импорт между слайсами
+ * одного слоя FSD запрещён.
+ */
+
+type PortraitProps = {
   src: string;
-  name: string;
+  alt: string;
   sizes?: string;
   priority?: boolean;
   className?: string;
 };
 
-export function CharacterPortrait({
+export function Portrait({
   src,
-  name,
+  alt,
   sizes = "(max-width: 768px) 50vw, 240px",
   priority = false,
   className,
-}: CharacterPortraitProps) {
+}: PortraitProps) {
   return (
     <div className={cn("relative overflow-hidden bg-muted", className)}>
       <Image
         src={src}
-        alt={name}
+        alt={alt}
         fill
         sizes={sizes}
         priority={priority}

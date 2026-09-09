@@ -4,7 +4,7 @@ import { getSpecialtyLabel, routes, type BackSource } from "@/shared/config";
 import { cn } from "@/shared/lib";
 
 import type { Character } from "../model/types";
-import { CharacterPortrait } from "./character-portrait";
+import { Portrait } from "@/shared/ui/portrait";
 
 type CharacterTileProps = {
   character: Character;
@@ -30,9 +30,9 @@ export function CharacterTile({
       className={cn("group flex w-full flex-col gap-1", className)}
     >
       <div className="overflow-hidden rounded-lg border transition-colors group-hover:border-primary/60 group-focus-visible:border-primary group-focus-visible:ring-3 group-focus-visible:ring-ring/50">
-        <CharacterPortrait
+        <Portrait
           src={character.image}
-          name={character.name}
+          alt={character.name}
           sizes="(max-width: 640px) 30vw, 120px"
           className="aspect-4/5 w-full"
         />

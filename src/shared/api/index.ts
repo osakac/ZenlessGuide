@@ -7,6 +7,7 @@ export {
 } from "./characters";
 
 export {
+  getAllTeams,
   getTeamsForCharacter,
   type Team,
   type TeamMember,

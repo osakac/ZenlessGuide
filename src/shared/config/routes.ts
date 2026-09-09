@@ -16,6 +16,7 @@ export const routes = {
   home: "/",
   tierlist: "/tierlist",
   characters: "/characters",
+  teams: "/teams",
   character: (slug: string, from?: BackSource) =>
     from
       ? `/characters/${slug}?${backParam}=${from}`

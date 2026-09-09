@@ -36,6 +36,7 @@ Next.js 16 (App Router) · TypeScript · Tailwind CSS v4 · shadcn/ui (Radix) ·
 | `/tierlist` | Тир-лист с фильтрами |
 | `/characters` | Все персонажи карточками с фильтрами |
 | `/characters/[slug]` | Гайд по персонажу |
+| `/teams` | Все составы команд |
 
 Фильтры хранят состояние в query-параметрах: ссылку с выбранными фильтрами можно переслать.
 
@@ -48,7 +49,7 @@ app/                 маршруты Next.js
 src/
   app/               провайдеры, глобальные стили
   views/             композиция страниц (слой pages в терминах FSD)
-  widgets/           tier-board, character-card-grid, character-guide, header, footer
+  widgets/           tier-board, character-card-grid, character-guide, team-grid, header, footer
   features/          filter-characters
   entities/          character, tier
   shared/            ui (shadcn), api (доступ к данным), lib, config

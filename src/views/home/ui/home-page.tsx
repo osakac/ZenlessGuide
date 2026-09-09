@@ -6,6 +6,25 @@ import { TierBadge } from "@/entities/tier";
 import { getTierBoard } from "@/shared/api";
 import { routes } from "@/shared/config";
 
+/** Разделы сайта: одинаковые карточки, поэтому описаны данными, а не разметкой. */
+const sections = [
+  {
+    href: routes.tierlist,
+    title: "Тир-лист",
+    text: "Агенты по тирам с фильтрами по атрибуту, специализации и рангу.",
+  },
+  {
+    href: routes.characters,
+    title: "Агенты",
+    text: "Полный список с переходом на подробный гайд по каждому.",
+  },
+  {
+    href: routes.teams,
+    title: "Команды",
+    text: "Все составы одним списком — кто с кем работает.",
+  },
+];
+
 export async function HomePage() {
   const board = await getTierBoard();
   const topTier = board.groups[0];
@@ -23,32 +42,20 @@ export async function HomePage() {
         </p>
       </section>
 
-      <section className="grid gap-4 sm:grid-cols-2">
-        <Link
-          href={routes.tierlist}
-          className="group flex flex-col gap-2 rounded-xl border bg-card p-6 transition-colors hover:border-primary/60"
-        >
-          <h2 className="flex items-center gap-2 text-xl font-semibold">
-            Тир-лист
-            <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
-          </h2>
-          <p className="text-sm text-muted-foreground">
-            Агенты по тирам с фильтрами по атрибуту, специализации и рангу.
-          </p>
-        </Link>
-
-        <Link
-          href={routes.characters}
-          className="group flex flex-col gap-2 rounded-xl border bg-card p-6 transition-colors hover:border-primary/60"
-        >
-          <h2 className="flex items-center gap-2 text-xl font-semibold">
-            Агенты
-            <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
-          </h2>
-          <p className="text-sm text-muted-foreground">
-            Полный список с переходом на подробный гайд по каждому.
-          </p>
-        </Link>
+      <section className="grid gap-4 sm:grid-cols-3">
+        {sections.map((section) => (
+          <Link
+            key={section.href}
+            href={section.href}
+            className="group flex flex-col gap-2 rounded-xl border bg-card p-6 transition-colors hover:border-primary/60"
+          >
+            <h2 className="flex items-center gap-2 text-xl font-semibold">
+              {section.title}
+              <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
+            </h2>
+            <p className="text-sm text-muted-foreground">{section.text}</p>
+          </Link>
+        ))}
       </section>
 
       {topTier && topTier.entries.length > 0 ? (
