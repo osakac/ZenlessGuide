@@ -24,10 +24,8 @@ function MemberPortrait({ member }: { member: TeamMember }) {
 
 export function TeamCard({ team, currentCharacterId }: TeamCardProps) {
   return (
-    <div className="rounded-lg border bg-background p-3">
-      <p className="font-medium">{team.name}</p>
-
-      <ul className="mt-2.5 grid grid-cols-3 gap-2">
+    <div className="h-full rounded-lg border bg-background p-3">
+      <ul className="grid grid-cols-3 gap-2">
         {team.members.map((member) => {
           const isCurrent = member.id === currentCharacterId;
 
@@ -63,10 +61,6 @@ export function TeamCard({ team, currentCharacterId }: TeamCardProps) {
           );
         })}
       </ul>
-
-      {team.note ? (
-        <p className="mt-2.5 text-sm text-muted-foreground">{team.note}</p>
-      ) : null}
     </div>
   );
 }

@@ -144,9 +144,8 @@ export function CharacterGuide({ character, teams = [] }: CharacterGuideProps) {
       {teams.length ? (
         <GuideSection title="Команды">
           <ul className="grid gap-3 sm:grid-cols-2">
-            {/* Названия составов не уникальны — у одного агента бывает две
-                «Тройные аномалии» с разным составом, — а вот набор участников
-                уникален по схеме данных, он и служит ключом. */}
+            {/* Ключ — набор участников: он уникален по схеме данных,
+                и ничего другого в составе нет. */}
             {teams.map((team) => (
               <li key={team.members.map((member) => member.id).join("|")}>
                 <TeamCard team={team} currentCharacterId={character.id} />

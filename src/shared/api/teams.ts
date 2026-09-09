@@ -17,9 +17,7 @@ const loadTeams = once(() => parseTeamsFile(teamsData).teams);
 export type TeamMember = Pick<Character, "id" | "name" | "slug" | "image">;
 
 export type Team = {
-  name: string;
   members: TeamMember[];
-  note?: string;
 };
 
 /**
@@ -36,8 +34,6 @@ export async function getTeamsForCharacter(
   return teams
     .filter((team) => team.members.includes(characterId))
     .map((team) => ({
-      name: team.name,
-      note: team.note,
       members: team.members.map((memberId) => {
         const character = byId.get(memberId);
 
@@ -47,7 +43,7 @@ export async function getTeamsForCharacter(
         // опечатка в id падает на сборке, а не тихо портит страницу.
         if (!character) {
           throw new Error(
-            `Команда «${team.name}» ссылается на неизвестного агента: ${memberId}`,
+            `Состав ${team.members.join(" + ")} ссылается на неизвестного агента: ${memberId}`,
           );
         }
 

@@ -1,3 +1,18 @@
 {
-  "teams": []
+  "teams": [
+    {
+      "members": [
+        "claret",
+        "norma",
+        "rina"
+      ]
+    },
+    {
+      "members": [
+        "claret",
+        "norma",
+        "nicole-demara"
+      ]
+    }
+  ]
 }

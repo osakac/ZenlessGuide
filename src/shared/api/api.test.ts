@@ -128,10 +128,7 @@ describe("тир-лист", () => {
 });
 
 describe("команды", () => {
-  const validTeam = {
-    name: "Тестовый состав",
-    members: ["miyabi", "ye-shunguang", "norma"],
-  };
+  const validTeam = { members: ["miyabi", "ye-shunguang", "norma"] };
 
   /**
    * Составы подменяются на тестовые: реальный `teams.json` наполняется
@@ -179,7 +176,7 @@ describe("команды", () => {
       parseTeamsFile({
         teams: [
           validTeam,
-          { ...validTeam, name: "Тот же состав", members: ["norma", "miyabi", "ye-shunguang"] },
+          { members: ["norma", "miyabi", "ye-shunguang"] },
         ],
       }),
     ).toThrowError(/больше одного раза/);
@@ -192,7 +189,6 @@ describe("команды", () => {
       const teams = await getTeamsForCharacter(memberId);
 
       expect(teams).toHaveLength(1);
-      expect(teams[0].name).toBe(validTeam.name);
       expect(teams[0].members.map((member) => member.id)).toEqual(
         validTeam.members,
       );
