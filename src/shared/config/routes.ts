@@ -3,7 +3,7 @@
  * Источник хранится в query-параметре, а не в истории браузера, — так ссылку
  * можно переслать, и она ведёт себя одинаково при открытии в новой вкладке.
  */
-export const backSources = ["tierlist", "characters"] as const;
+export const backSources = ["tierlist", "characters", "teams"] as const;
 
 export type BackSource = (typeof backSources)[number];
 

@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 import { Portrait } from "@/shared/ui/portrait";
-import { routes } from "@/shared/config";
+import { routes, type BackSource } from "@/shared/config";
 import { cn } from "@/shared/lib";
 
 import type { Team, TeamMember } from "../model/types";
@@ -13,6 +13,8 @@ type TeamCardProps = {
    * В общем списке команд текущего агента нет, и ссылками становятся все трое.
    */
   currentCharacterId?: string;
+  /** Откуда переход: страница агента вернёт по кнопке «назад» туда же. */
+  from?: BackSource;
 };
 
 function MemberPortrait({ member }: { member: TeamMember }) {
@@ -26,7 +28,7 @@ function MemberPortrait({ member }: { member: TeamMember }) {
   );
 }
 
-export function TeamCard({ team, currentCharacterId }: TeamCardProps) {
+export function TeamCard({ team, currentCharacterId, from }: TeamCardProps) {
   return (
     <div className="h-full rounded-lg border bg-background p-3">
       <ul className="grid grid-cols-3 gap-2">
@@ -49,7 +51,7 @@ export function TeamCard({ team, currentCharacterId }: TeamCardProps) {
                 </div>
               ) : (
                 <Link
-                  href={routes.character(member.slug)}
+                  href={routes.character(member.slug, from)}
                   className={cn(
                     "group flex flex-col gap-1 rounded-lg",
                     "focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none",

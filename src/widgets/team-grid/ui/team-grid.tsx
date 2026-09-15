@@ -23,7 +23,7 @@ export function TeamGrid({
           и ничего другого в составе нет. */}
       {teams.map((team) => (
         <li key={team.members.map((member) => member.id).join("|")}>
-          <TeamCard team={team} />
+          <TeamCard team={team} from="teams" />
         </li>
       ))}
     </ul>

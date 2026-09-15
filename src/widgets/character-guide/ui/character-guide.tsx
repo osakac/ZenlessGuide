@@ -13,27 +13,50 @@ type CharacterGuideProps = {
 /**
  * Каждый блок появляется, только если данные для него заполнены:
  * гайды наполняются постепенно, и полупустая страница не должна
- * показывать заголовки без содержимого.
+ * показывать заголовки без содержимого. Исключение — «Команды»: они не поле
+ * гайда, а выборка из общего списка составов, и «составов нет» — тоже ответ.
  */
 export function CharacterGuide({ character, teams = [] }: CharacterGuideProps) {
   const { stats, buildGuide } = character;
   const hasStats = stats && Object.keys(stats).length > 0;
 
-  const sections = [
+  const hasGuide = [
     hasStats,
     buildGuide?.engines?.length,
     buildGuide?.discs?.length,
     buildGuide?.mainStats?.length || buildGuide?.subStats?.length,
     buildGuide?.skillPriority?.length,
-    teams.length,
     buildGuide?.tips?.length,
   ].some(Boolean);
 
-  if (!sections) {
+  const teamsSection = (
+    <GuideSection title="Команды">
+      {teams.length ? (
+        <ul className="grid gap-3 sm:grid-cols-2">
+          {/* Ключ — набор участников: он уникален по схеме данных,
+              и ничего другого в составе нет. */}
+          {teams.map((team) => (
+            <li key={team.members.map((member) => member.id).join("|")}>
+              <TeamCard team={team} currentCharacterId={character.id} />
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p className="text-sm text-muted-foreground">
+          Возможных команд на данный момент нет.
+        </p>
+      )}
+    </GuideSection>
+  );
+
+  if (!hasGuide) {
     return (
-      <p className="rounded-xl border border-dashed py-12 text-center text-sm text-muted-foreground">
-        Гайд по этому агенту ещё не написан.
-      </p>
+      <div className="flex flex-col gap-4">
+        <p className="rounded-xl border border-dashed py-12 text-center text-sm text-muted-foreground">
+          Гайд по этому агенту ещё не написан.
+        </p>
+        {teamsSection}
+      </div>
     );
   }
 
@@ -140,19 +163,7 @@ export function CharacterGuide({ character, teams = [] }: CharacterGuideProps) {
         </GuideSection>
       ) : null}
 
-      {teams.length ? (
-        <GuideSection title="Команды">
-          <ul className="grid gap-3 sm:grid-cols-2">
-            {/* Ключ — набор участников: он уникален по схеме данных,
-                и ничего другого в составе нет. */}
-            {teams.map((team) => (
-              <li key={team.members.map((member) => member.id).join("|")}>
-                <TeamCard team={team} currentCharacterId={character.id} />
-              </li>
-            ))}
-          </ul>
-        </GuideSection>
-      ) : null}
+      {teamsSection}
 
       {buildGuide?.tips?.length ? (
         <GuideSection title="Советы по игре">

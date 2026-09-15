@@ -9,6 +9,7 @@ import { backParam, isBackSource, routes } from "@/shared/config";
 const targets = {
   tierlist: { href: routes.tierlist, label: "Вернуться в тир-лист" },
   characters: { href: routes.characters, label: "Все агенты" },
+  teams: { href: routes.teams, label: "Все команды" },
 } as const;
 
 function BackLinkView({ href, label }: { href: string; label: string }) {
@@ -25,7 +26,7 @@ function BackLinkView({ href, label }: { href: string; label: string }) {
 
 /**
  * Пока параметр не прочитан (статический HTML до гидратации) показываем
- * возврат к списку агентов — он же и остаётся, если пришли не из тир-листа.
+ * возврат к списку агентов — он же и остаётся, если источник перехода не указан.
  */
 export function BackLinkFallback() {
   return <BackLinkView {...targets.characters} />;
