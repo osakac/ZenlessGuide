@@ -60,7 +60,7 @@ type Character = {
   name: string;
   rarity: string;        // например, S / A
   attribute: string;     // стихия: электро, огонь, лёд и т.д.
-  specialty: string;     // роль: Атака, Защита, Support, Стан и т.д.
+  specialty: string;     // роль: Нападение, Оборона, Support, Стан и т.д.
   shortDescription: string;
   image: string;         // путь к изображению/иконке
   // билд-гайд — набор полей уточним при первой партии данных

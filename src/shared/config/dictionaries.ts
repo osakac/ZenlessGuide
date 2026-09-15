@@ -14,11 +14,11 @@ const attributeLabels: Record<string, string> = {
 };
 
 const specialtyLabels: Record<string, string> = {
-  attack: "Атака",
+  attack: "Нападение",
   stun: "Оглушение",
   anomaly: "Аномалия",
   support: "Поддержка",
-  defense: "Защита",
+  defense: "Оборона",
   rupture: "Разрушение",
   armorer: "Оружейник",
 };
@@ -34,13 +34,13 @@ const statLabels: Record<string, string> = {
   hp: "HP",
   atk: "Атака",
   def: "Защита",
-  impact: "Импакт",
+  impact: "Импульс",
   critRate: "Крит. шанс",
   critDmg: "Крит. урон",
-  anomalyMastery: "Мастерство аномалий",
-  anomalyProficiency: "Владение аномалиями",
+  anomalyMastery: "Контроль аномалии",
+  anomalyProficiency: "Знание аномалии",
   energyRegen: "Восст. энергии",
-  penRatio: "Пробитие брони",
+  penRatio: "Пробитие",
 };
 
 function translate(dictionary: Record<string, string>, key: string): string {

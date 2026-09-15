@@ -56,7 +56,7 @@ description: Добавляет нового агента Zenless Zone Zero в �
 
 - «Best Disk Drives Sets» → `discs`: основной сет с `pieces: 4`, варианты 2-PC с `pieces: 2`. `setName` — английское название, `note` — короткая русская пометка.
 - «Best Disk Drives Stats» → `mainStats`: слоты подписываются по-русски — `{ "slot": "Диск 4", "stat": "Крит. шанс %" }`. Строка «Substats: …» → `subStats` списком по-русски.
-- «Skill priority» → `skillPriority`. Русские названия: Basic Attack → «Базовая атака», Special Attack → «Особый приём», Chain Attack → «Цепная атака», Assist → «Помощь», Dodge → «Уклонение».
+- «Skill priority» → `skillPriority`. Русские названия: Basic Attack → «Базовая атака», Special Attack → «Особый приём», Chain Attack → «Цепочка атак», Assist → «Помощь», Dodge → «Уклонение».
 - `tips` — один-три коротких совета по-русски о том, что в этом агенте неочевидно. Если ничего неочевидного нет, оставь блок пустым: пустые блоки не рисуются, а вода на странице заметна.
 
 ## Этап 5 — команды

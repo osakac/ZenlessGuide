@@ -136,7 +136,7 @@
       "characterId": "promeia",
       "tier": "A",
       "role": "anomaly-dps",
-      "note": "Самое высокое мастерство аномалий в списке."
+      "note": "Самый высокий контроль аномалии в списке."
     },
     {
       "characterId": "vivian",
@@ -160,7 +160,7 @@
       "characterId": "rina",
       "tier": "A",
       "role": "support",
-      "note": "Единственная с ненулевым базовым пробитием брони."
+      "note": "Единственная с ненулевым базовым пробитием."
     },
     {
       "characterId": "zhao",
