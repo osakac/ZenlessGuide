@@ -61,6 +61,8 @@ export const filterLabels = {
   attribute: "Атрибут",
   specialty: "Специализация",
   rarity: "Ранг",
+  agent: "Агент",
+  damageType: "Тип урона",
   all: "Все",
   reset: "Сбросить",
 } as const;
