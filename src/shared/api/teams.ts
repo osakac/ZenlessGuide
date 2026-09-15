@@ -1,7 +1,12 @@
 import teamsData from "@data/teams.json";
 
 import { once } from "../lib/once";
-import { parseTeamsFile, type Character, type TeamRecord } from "./schemas";
+import {
+  parseTeamsFile,
+  type Character,
+  type TeamDamageType,
+  type TeamRecord,
+} from "./schemas";
 import { getAllCharacters } from "./characters";
 
 /**
@@ -18,6 +23,7 @@ export type TeamMember = Pick<Character, "id" | "name" | "slug" | "image">;
 
 export type Team = {
   members: TeamMember[];
+  damageType?: TeamDamageType;
 };
 
 /**
@@ -29,6 +35,7 @@ async function resolveTeams(records: TeamRecord[]): Promise<Team[]> {
   const byId = new Map(characters.map((character) => [character.id, character]));
 
   return records.map((team) => ({
+    damageType: team.damageType,
     members: team.members.map((memberId) => {
       const character = byId.get(memberId);
 

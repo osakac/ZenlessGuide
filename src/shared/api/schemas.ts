@@ -56,6 +56,16 @@ export const charactersFileSchema = z.object({
  * набор участников сам по себе уникален. Ничего, кроме участников, в составе
  * и нет: название и комментарий были придуманными подписями к тройке портретов.
  */
+/**
+ * Тип урона состава — чем команда преимущественно наносит урон: крит-урон
+ * основного ДД или дот от аномалий. У ролей персонажа в тир-листе такой же
+ * набор ключей плюс `support`, но у состава в целом роли поддержки нет —
+ * это классификация урона команды, а не позиции конкретного агента.
+ * Опционально, как и остальные необязательные поля: составы заводятся
+ * заново и размечаются постепенно.
+ */
+export const teamDamageTypeSchema = z.enum(["pure-dps", "anomaly-dps"]);
+
 export const teamSchema = z.object({
   members: z
     .array(nonEmpty)
@@ -66,6 +76,7 @@ export const teamSchema = z.object({
       (members) => new Set(members).size === members.length,
       "агент не может занимать в команде два места",
     ),
+  damageType: teamDamageTypeSchema.optional(),
 });
 
 /** Ключ состава — набор участников без учёта порядка. */
@@ -106,6 +117,7 @@ export const tierListFileSchema = z.object({
 export type BuildGuide = z.infer<typeof buildGuideSchema>;
 export type Character = z.infer<typeof characterSchema>;
 export type TeamRecord = z.infer<typeof teamSchema>;
+export type TeamDamageType = z.infer<typeof teamDamageTypeSchema>;
 export type Tier = z.infer<typeof tierSchema>;
 export type TierRole = z.infer<typeof tierRoleSchema>;
 export type TierEntry = z.infer<typeof tierEntrySchema>;

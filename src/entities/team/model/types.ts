@@ -1,1 +1,1 @@
-export type { Team, TeamMember } from "@/shared/api";
+export type { Team, TeamMember, TeamDamageType } from "@/shared/api";

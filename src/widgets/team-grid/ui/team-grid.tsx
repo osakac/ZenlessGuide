@@ -18,7 +18,7 @@ export function TeamGrid({
   }
 
   return (
-    <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+    <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
       {/* Ключ — набор участников: он уникален по схеме данных,
           и ничего другого в составе нет. */}
       {teams.map((team) => (

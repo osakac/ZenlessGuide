@@ -32,7 +32,7 @@ export function CharacterGuide({ character, teams = [] }: CharacterGuideProps) {
   const teamsSection = (
     <GuideSection title="Команды">
       {teams.length ? (
-        <ul className="grid gap-3 sm:grid-cols-2">
+        <ul className="grid gap-4 sm:grid-cols-2">
           {/* Ключ — набор участников: он уникален по схеме данных,
               и ничего другого в составе нет. */}
           {teams.map((team) => (

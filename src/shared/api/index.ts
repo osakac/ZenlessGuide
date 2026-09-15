@@ -31,4 +31,5 @@ export {
   type Tier,
   type TierEntry,
   type TierRole,
+  type TeamDamageType,
 } from "./schemas";

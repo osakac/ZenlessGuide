@@ -5,105 +5,120 @@
         "claret",
         "norma",
         "rina"
-      ]
+      ],
+      "damageType": "pure-dps"
     },
     {
       "members": [
         "ye-shunguang",
         "sunna",
         "zhao"
-      ]
+      ],
+      "damageType": "pure-dps"
     },
     {
       "members": [
         "ye-shunguang",
         "dialyn",
         "zhao"
-      ]
+      ],
+      "damageType": "pure-dps"
     },
     {
       "members": [
         "aria",
         "nangong-yu",
         "sunna"
-      ]
+      ],
+      "damageType": "anomaly-dps"
     },
     {
       "members": [
         "aria",
         "velina",
         "remielle"
-      ]
+      ],
+      "damageType": "anomaly-dps"
     },
     {
       "members": [
         "burnice",
         "velina",
         "remielle"
-      ]
+      ],
+      "damageType": "anomaly-dps"
     },
     {
       "members": [
         "promeia",
         "velina",
         "remielle"
-      ]
+      ],
+      "damageType": "anomaly-dps"
     },
     {
       "members": [
         "yixuan",
         "dialyn",
         "lucia"
-      ]
+      ],
+      "damageType": "pure-dps"
     },
     {
       "members": [
         "yidhari",
         "dialyn",
         "lucia"
-      ]
+      ],
+      "damageType": "pure-dps"
     },
     {
       "members": [
         "miyabi",
         "nangong-yu",
         "yuzuha"
-      ]
+      ],
+      "damageType": "anomaly-dps"
     },
     {
       "members": [
         "miyabi",
         "yuzuha",
         "vivian"
-      ]
+      ],
+      "damageType": "anomaly-dps"
     },
     {
       "members": [
         "alice",
         "yuzuha",
         "vivian"
-      ]
+      ],
+      "damageType": "anomaly-dps"
     },
     {
       "members": [
         "jane-doe",
         "velina",
         "remielle"
-      ]
+      ],
+      "damageType": "anomaly-dps"
     },
     {
       "members": [
         "jane-doe",
         "yuzuha",
         "vivian"
-      ]
+      ],
+      "damageType": "anomaly-dps"
     },
     {
       "members": [
         "jane-doe",
         "nangong-yu",
         "yuzuha"
-      ]
+      ],
+      "damageType": "anomaly-dps"
     }
   ]
 }
