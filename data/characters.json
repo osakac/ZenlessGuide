@@ -2351,6 +2351,89 @@
       }
     },
     {
+      "id": "vivian",
+      "slug": "vivian",
+      "name": "Вивиан",
+      "rarity": "S",
+      "attribute": "ether",
+      "specialty": "anomaly",
+      "faction": "Mockingbird",
+      "shortDescription": "Эфирный аномальный саб-ДД: наносит доп. урон аномалиями и усиливает урон хаоса в команде.",
+      "image": "/images/characters/vivian.webp",
+      "stats": {
+        "hp": 7673,
+        "atk": 880,
+        "def": 606,
+        "impact": 86,
+        "critRate": "5%",
+        "critDmg": "50%",
+        "penRatio": "0%",
+        "anomalyMastery": 144,
+        "anomalyProficiency": 118,
+        "energyRegen": 1.2
+      },
+      "buildGuide": {
+        "engines": [
+          {
+            "name": "Flight of Fancy",
+            "note": "Сигнатурное оружие: даёт много Anomaly Proficiency и повышает скорость набора аномалии."
+          },
+          {
+            "name": "Weeping Gemini",
+            "note": "Бесплатная альтернатива: атака % и Anomaly Proficiency на макс. стаках."
+          }
+        ],
+        "discs": [
+          {
+            "setName": "Phaethon's Melody",
+            "pieces": 4,
+            "note": "Профильный сет под аномальных эфирных агентов."
+          },
+          {
+            "setName": "Freedom Blues",
+            "pieces": 2,
+            "note": "Рекомендованный вариант."
+          },
+          {
+            "setName": "Chaos Jazz",
+            "pieces": 2,
+            "note": "Равноценная замена Freedom Blues."
+          }
+        ],
+        "mainStats": [
+          {
+            "slot": "Диск 4",
+            "stat": "Владение аномалиями"
+          },
+          {
+            "slot": "Диск 5",
+            "stat": "Урон эфира % > Пробитие брони % = Атака %"
+          },
+          {
+            "slot": "Диск 6",
+            "stat": "Мастерство аномалий"
+          }
+        ],
+        "subStats": [
+          "Владение аномалиями",
+          "Атака %",
+          "Атака",
+          "Пробитие брони"
+        ],
+        "skillPriority": [
+          "Базовая атака",
+          "Цепная атака",
+          "Особый приём",
+          "Помощь",
+          "Уклонение"
+        ],
+        "tips": [
+          "Владение аномалиями важнее Атаки % почти всегда — большая часть урона идёт через Abloom, который масштабируется от него напрямую.",
+          "Сама почти не применяет аномалии — нужна команда, где кто-то ещё вешает аномальные статусы, чтобы триггерить её пассивки."
+        ]
+      }
+    },
+    {
       "id": "rina",
       "slug": "rina",
       "name": "Рина",

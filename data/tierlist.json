@@ -139,6 +139,12 @@
       "note": "Самое высокое мастерство аномалий в списке."
     },
     {
+      "characterId": "vivian",
+      "tier": "A",
+      "role": "anomaly-dps",
+      "note": "Саб-ДД: почти не бьёт сама, усиливает аномальный урон и урон хаоса команды."
+    },
+    {
       "characterId": "astra-yao",
       "tier": "A",
       "role": "support",
