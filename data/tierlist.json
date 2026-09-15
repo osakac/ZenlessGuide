@@ -145,6 +145,12 @@
       "note": "Саб-ДД: почти не бьёт сама, усиливает аномальный урон и урон хаоса команды."
     },
     {
+      "characterId": "jane-doe",
+      "tier": "A",
+      "role": "anomaly-dps",
+      "note": "Держит цель в уязвимом состоянии для импульсного урона (Assault) команды."
+    },
+    {
       "characterId": "astra-yao",
       "tier": "A",
       "role": "support",
