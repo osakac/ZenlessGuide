@@ -166,6 +166,12 @@ html body[data-scroll-locked] {
   /* Тиры */
   --tier-s: oklch(0.74 0.18 60);
   --tier-a: oklch(0.62 0.21 300);
+
+  /* Роли в тир-листе — цвета позаимствованы у prydwen.gg, чтобы категории
+     считывались привычно тем, кто уже пользовался их тир-листом. */
+  --role-pure-dps: #ed343e;
+  --role-anomaly-dps: #c267ec;
+  --role-support: #7cde97;
 }
 
 .dark {
@@ -206,4 +212,8 @@ html body[data-scroll-locked] {
 
   --color-tier-s: var(--tier-s);
   --color-tier-a: var(--tier-a);
+
+  --color-role-pure-dps: var(--role-pure-dps);
+  --color-role-anomaly-dps: var(--role-anomaly-dps);
+  --color-role-support: var(--role-support);
 }
