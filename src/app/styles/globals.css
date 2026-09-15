@@ -126,8 +126,22 @@
   }
   html {
     @apply font-sans;
+    /* overflow-y: scroll держит скроллбар на html независимо от body:
+       иначе браузер передаёт html overflow тела, и когда Radix (Select,
+       Dialog) на открытии ставит body { overflow: hidden }, это правило
+       "утекает" на html и скроллбar пропадает вместе с зарезервированным
+       под него местом (scrollbar-gutter тогда не на чем применять). */
+    overflow-y: scroll;
     scrollbar-gutter: stable;
   }
+}
+
+/* Radix (react-remove-scroll) при открытом Select/Dialog добавляет
+   body[data-scroll-locked] { margin-right: <ширина скроллбара> }, компенсируя
+   пропавший скроллбар. У нас скроллбар всегда закреплён за html, поэтому
+   компенсация лишняя и только сдвигает контент страницы — отключаем её. */
+html body[data-scroll-locked] {
+  margin-right: 0 !important;
 }
 /* ---------------------------------------------------------------------------
    ZenlessGuide — доменная палитра поверх базовой темы shadcn.
