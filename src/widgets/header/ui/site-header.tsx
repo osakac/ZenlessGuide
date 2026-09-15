@@ -25,7 +25,7 @@ export function SiteHeader() {
           Zenless<span className="text-primary">Guide</span>
         </Link>
 
-        <nav className="flex items-center gap-1 overflow-x-auto text-sm">
+        <nav className="flex items-center gap-1 overflow-x-auto text-sm [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
           {navigation.map((item) => {
             const isActive =
               item.href === routes.home

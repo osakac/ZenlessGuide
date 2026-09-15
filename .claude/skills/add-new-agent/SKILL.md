@@ -74,7 +74,7 @@ description: Добавляет нового агента Zenless Zone Zero в �
 ## Этап 6 — запись, проверка, документация
 
 1. **Портрет**: `curl -fsSL https://cdn.prydwen.gg/images/zenless-zone-zero/characters/<slug>_card.webp -o public/images/characters/<slug>.webp` (готовый webp 374×512, пережимать не нужно). Если curl не резолвит хост — скачай во временную папку и скопируй файл оттуда: из каталога проекта сеть бывает закрыта.
-2. **Данные**: объект в `data/characters.json`, запись в `entries` из `data/tierlist.json` (`characterId`, `tier`, `role`, при желании короткий `note`), составы в `data/teams.json`. Заодно поправь `updatedAt` в `data/tierlist.json` — эта дата показана на странице тир-листа, и она про свежесть оценки, а не про дату правки файла. Порядок записей в обоих файлах — по тиру и роли, агент встаёт к своим. Файлы лежат в CRLF: перезаписывая их скриптом, верни переводы строк на место (`JSON.stringify(data, null, 2)` + `
+2. **Данные**: объект в `data/characters.json`, запись в `entries` из `data/tierlist.json` (`characterId`, `tier`, `role`, при желании короткий `note`), составы в `data/teams.json`. Порядок записей в обоих файлах — по тиру и роли, агент встаёт к своим. Файлы лежат в CRLF: перезаписывая их скриптом, верни переводы строк на место (`JSON.stringify(data, null, 2)` + `
 `), иначе в диффе окажется весь файл.
 3. **Проверка агента**: `node .claude/skills/add-new-agent/scripts/check-agent.mjs <id>` — портрет на диске, подписи для атрибута и специализации, дубли, целостность команд.
 4. **Проверка проекта**: `npm run typecheck`, `npm run lint`, `npm run test`, `npm run build` — как требует `CLAUDE.md`. Тесты валидируют реальные данные, так что опечатка в JSON всплывёт здесь.

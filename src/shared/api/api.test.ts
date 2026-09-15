@@ -44,9 +44,9 @@ describe("валидация данных", () => {
   });
 
   it("падает с понятной ошибкой на битом тир-листе", () => {
-    expect(() => parseTierListFile({ tiers: [], entries: [] })).toThrowError(
-      /data\/tierlist\.json/,
-    );
+    expect(() =>
+      parseTierListFile({ tiers: [], entries: [{ characterId: "test" }] }),
+    ).toThrowError(/data\/tierlist\.json/);
   });
 });
 

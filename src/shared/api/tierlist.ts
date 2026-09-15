@@ -28,12 +28,11 @@ export type TierGroup = {
 };
 
 export type TierBoard = {
-  updatedAt: string;
   groups: TierGroup[];
 };
 
 export async function getTierBoard(): Promise<TierBoard> {
-  const { updatedAt, tiers, entries } = loadTierList();
+  const { tiers, entries } = loadTierList();
   const characters = await getAllCharacters();
   const byId = new Map(characters.map((character) => [character.id, character]));
 
@@ -51,7 +50,7 @@ export async function getTierBoard(): Promise<TierBoard> {
       }),
   }));
 
-  return { updatedAt, groups };
+  return { groups };
 }
 
 /** Тир конкретного персонажа — для карточки персонажа и страницы гайда. */

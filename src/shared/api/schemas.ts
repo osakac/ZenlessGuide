@@ -99,7 +99,6 @@ export const tierEntrySchema = z.object({
 });
 
 export const tierListFileSchema = z.object({
-  updatedAt: nonEmpty,
   tiers: z.array(tierSchema),
   entries: z.array(tierEntrySchema),
 });
