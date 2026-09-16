@@ -8,7 +8,9 @@ export {
 export {
   filterLabels,
   getAttributeLabel,
+  getAttributeIcon,
   getSpecialtyLabel,
+  getSpecialtyIcon,
   getStatLabel,
   getTierRoleLabel,
 } from "./dictionaries";

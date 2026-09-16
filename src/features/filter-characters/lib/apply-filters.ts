@@ -13,14 +13,11 @@ export function applyCharacterFilters<T extends Character>(
     if (search && !character.name.toLowerCase().includes(search)) return false;
     if (state.attribute && character.attribute !== state.attribute) return false;
     if (state.specialty && character.specialty !== state.specialty) return false;
-    if (state.rarity && character.rarity !== state.rarity) return false;
 
     return true;
   });
 }
 
 export function isFilterActive(state: CharacterFilterState): boolean {
-  return Boolean(
-    state.search.trim() || state.attribute || state.specialty || state.rarity,
-  );
+  return Boolean(state.search.trim() || state.attribute || state.specialty);
 }

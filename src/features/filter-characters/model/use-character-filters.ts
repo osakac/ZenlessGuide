@@ -18,7 +18,6 @@ export function useCharacterFilters() {
       search: searchParams.get("q") ?? "",
       attribute: searchParams.get("attribute"),
       specialty: searchParams.get("specialty"),
-      rarity: searchParams.get("rarity"),
     }),
     [searchParams],
   );
@@ -31,7 +30,6 @@ export function useCharacterFilters() {
       if (merged.search.trim()) params.set("q", merged.search.trim());
       if (merged.attribute) params.set("attribute", merged.attribute);
       if (merged.specialty) params.set("specialty", merged.specialty);
-      if (merged.rarity) params.set("rarity", merged.rarity);
 
       const query = params.toString();
       router.replace(query ? `?${query}` : "?", { scroll: false });

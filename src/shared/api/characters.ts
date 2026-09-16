@@ -28,12 +28,12 @@ export async function getCharacterById(id: string): Promise<Character | null> {
 export type FilterOptions = {
   attributes: string[];
   specialties: string[];
-  rarities: string[];
 };
 
 /**
  * Варианты для фильтров вычисляются из самих данных, а не задаются списком:
  * при наполнении реальными персонажами фильтры подстроятся без правки кода.
+ * Ранга среди них нет — все агенты сейчас ранга S, фильтр по нему был бы бессмысленным.
  */
 export async function getCharacterFilterOptions(): Promise<FilterOptions> {
   const characters = loadCharacters();
@@ -43,6 +43,5 @@ export async function getCharacterFilterOptions(): Promise<FilterOptions> {
   return {
     attributes: unique(characters.map((character) => character.attribute)),
     specialties: unique(characters.map((character) => character.specialty)),
-    rarities: unique(characters.map((character) => character.rarity)),
   };
 }

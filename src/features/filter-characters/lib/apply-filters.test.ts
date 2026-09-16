@@ -18,9 +18,9 @@ const character = (overrides: Partial<Character>): Character => ({
 });
 
 const characters = [
-  character({ id: "a", name: "Эллен Джо", attribute: "ice", specialty: "attack", rarity: "S" }),
-  character({ id: "b", name: "Энби Демара", attribute: "electric", specialty: "stun", rarity: "A" }),
-  character({ id: "c", name: "Бен Биггер", attribute: "fire", specialty: "defense", rarity: "A" }),
+  character({ id: "a", name: "Эллен Джо", attribute: "ice", specialty: "attack" }),
+  character({ id: "b", name: "Энби Демара", attribute: "electric", specialty: "stun" }),
+  character({ id: "c", name: "Бен Биггер", attribute: "fire", specialty: "defense" }),
 ];
 
 describe("applyCharacterFilters", () => {
@@ -37,7 +37,7 @@ describe("applyCharacterFilters", () => {
     expect(found.map((item) => item.id)).toEqual(["a"]);
   });
 
-  it("фильтрует по атрибуту, специализации и рангу", () => {
+  it("фильтрует по атрибуту и специализации", () => {
     expect(
       applyCharacterFilters(characters, {
         ...emptyFilterState,
@@ -51,12 +51,6 @@ describe("applyCharacterFilters", () => {
         specialty: "defense",
       }).map((item) => item.id),
     ).toEqual(["c"]);
-
-    expect(
-      applyCharacterFilters(characters, { ...emptyFilterState, rarity: "A" }).map(
-        (item) => item.id,
-      ),
-    ).toEqual(["b", "c"]);
   });
 
   it("применяет несколько фильтров одновременно", () => {
@@ -65,7 +59,6 @@ describe("applyCharacterFilters", () => {
         search: "б",
         attribute: "fire",
         specialty: "defense",
-        rarity: "A",
       }).map((item) => item.id),
     ).toEqual(["c"]);
   });
@@ -89,6 +82,6 @@ describe("isFilterActive", () => {
 
   it("любой заданный фильтр активен", () => {
     expect(isFilterActive({ ...emptyFilterState, search: "эл" })).toBe(true);
-    expect(isFilterActive({ ...emptyFilterState, rarity: "S" })).toBe(true);
+    expect(isFilterActive({ ...emptyFilterState, attribute: "ice" })).toBe(true);
   });
 });

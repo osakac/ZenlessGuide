@@ -23,6 +23,28 @@ const specialtyLabels: Record<string, string> = {
   armorer: "Оружейник",
 };
 
+/** Иконки специальностей — с wiki.gg, лежат в public/images/specialties. */
+const specialtyIcons: Record<string, string> = {
+  attack: "/images/specialties/attack.png",
+  stun: "/images/specialties/stun.png",
+  anomaly: "/images/specialties/anomaly.png",
+  support: "/images/specialties/support.png",
+  defense: "/images/specialties/defense.png",
+  rupture: "/images/specialties/rupture.png",
+  armorer: "/images/specialties/armorer.png",
+};
+
+/** Иконки атрибутов — с wiki.gg, лежат в public/images/attributes. */
+const attributeIcons: Record<string, string> = {
+  physical: "/images/attributes/physical.png",
+  fire: "/images/attributes/fire.png",
+  ice: "/images/attributes/ice.png",
+  electric: "/images/attributes/electric.png",
+  ether: "/images/attributes/ether.png",
+  wind: "/images/attributes/wind.png",
+  lumiflux: "/images/attributes/lumiflux.png",
+};
+
 /** Роли в тир-листе: как персонаж используется в команде. */
 const tierRoleLabels: Record<string, string> = {
   "pure-dps": "Pure DPS",
@@ -51,6 +73,10 @@ export const getAttributeLabel = (key: string) =>
   translate(attributeLabels, key);
 export const getSpecialtyLabel = (key: string) =>
   translate(specialtyLabels, key);
+export const getSpecialtyIcon = (key: string): string | undefined =>
+  specialtyIcons[key];
+export const getAttributeIcon = (key: string): string | undefined =>
+  attributeIcons[key];
 export const getTierRoleLabel = (key: string) =>
   translate(tierRoleLabels, key);
 export const getStatLabel = (key: string) => translate(statLabels, key);
@@ -60,7 +86,6 @@ export const filterLabels = {
   search: "Поиск по имени",
   attribute: "Атрибут",
   specialty: "Специализация",
-  rarity: "Ранг",
   agent: "Агент",
   damageType: "Тип урона",
   all: "Все",

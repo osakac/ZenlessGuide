@@ -27,6 +27,16 @@ const roleBadgeStyles: Record<string, string> = {
   support: "border-role-support/40 bg-role-support/15 text-role-support",
 };
 
+/** Та же палитра, что и у бейджа, но применяется только к выбранной кнопке тоггла. */
+const roleToggleStyles: Record<string, string> = {
+  "pure-dps":
+    "data-[state=on]:border-role-pure-dps/40 data-[state=on]:bg-role-pure-dps/15 data-[state=on]:text-role-pure-dps data-[state=on]:hover:bg-role-pure-dps/20",
+  "anomaly-dps":
+    "data-[state=on]:border-role-anomaly-dps/40 data-[state=on]:bg-role-anomaly-dps/15 data-[state=on]:text-role-anomaly-dps data-[state=on]:hover:bg-role-anomaly-dps/20",
+  support:
+    "data-[state=on]:border-role-support/40 data-[state=on]:bg-role-support/15 data-[state=on]:text-role-support data-[state=on]:hover:bg-role-support/20",
+};
+
 export function getRoleIcon(role: string): LucideIcon | undefined {
   return roleIcons[role];
 }
@@ -49,4 +59,8 @@ export function getRoleTextColor(role: string): string {
 
 export function getRoleBadgeStyle(role: string): string {
   return roleBadgeStyles[role] ?? "border-border bg-muted text-muted-foreground";
+}
+
+export function getRoleToggleStyle(role: string): string {
+  return roleToggleStyles[role] ?? "";
 }
