@@ -1,5 +1,7 @@
 import { z } from "zod";
 
+import { teamDamageTypes } from "../config/team-damage-types";
+
 /**
  * Схемы данных — единственный источник правды по форме персонажей и тир-листа.
  * Типы выводятся отсюда через z.infer, чтобы не расходиться с валидацией.
@@ -64,7 +66,7 @@ export const charactersFileSchema = z.object({
  * Опционально, как и остальные необязательные поля: составы заводятся
  * заново и размечаются постепенно.
  */
-export const teamDamageTypeSchema = z.enum(["pure-dps", "anomaly-dps"]);
+export const teamDamageTypeSchema = z.enum(teamDamageTypes);
 
 export const teamSchema = z.object({
   members: z

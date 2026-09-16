@@ -2,7 +2,11 @@ import { describe, expect, it } from "vitest";
 
 import type { Character } from "@/entities/character";
 
-import { applyCharacterFilters, isFilterActive } from "./apply-filters";
+import {
+  applyCharacterFilters,
+  isFilterActive,
+  matchesCharacterFilters,
+} from "./apply-filters";
 import { emptyFilterState } from "../model/types";
 
 const character = (overrides: Partial<Character>): Character => ({
@@ -32,6 +36,15 @@ describe("applyCharacterFilters", () => {
     const found = applyCharacterFilters(characters, {
       ...emptyFilterState,
       search: "  эллен ",
+    });
+
+    expect(found.map((item) => item.id)).toEqual(["a"]);
+  });
+
+  it("находит по имени из нескольких слов, с пробелом внутри", () => {
+    const found = applyCharacterFilters(characters, {
+      ...emptyFilterState,
+      search: "эллен д",
     });
 
     expect(found.map((item) => item.id)).toEqual(["a"]);
@@ -71,6 +84,19 @@ describe("applyCharacterFilters", () => {
         specialty: "stun",
       }),
     ).toEqual([]);
+  });
+});
+
+describe("matchesCharacterFilters", () => {
+  it("совпадает с applyCharacterFilters на каждом персонаже", () => {
+    const state = { ...emptyFilterState, attribute: "electric" };
+    const matches = matchesCharacterFilters(state);
+
+    expect(characters.filter(matches)).toEqual(
+      applyCharacterFilters(characters, state),
+    );
+    expect(matches(characters[0])).toBe(false);
+    expect(matches(characters[1])).toBe(true);
   });
 });
 

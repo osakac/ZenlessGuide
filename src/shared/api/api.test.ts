@@ -28,7 +28,7 @@ describe("валидация данных", () => {
           rarity: "S",
           attribute: "ice",
           specialty: "attack",
-                  shortDescription: "",
+          shortDescription: "",
           image: "/images/characters/test.svg",
         },
       ],
@@ -76,22 +76,22 @@ describe("персонажи", () => {
 
 describe("тир-лист", () => {
   it("раскладывает всех персонажей тир-листа по группам", async () => {
-    const board = await getTierBoard();
-    const placed = board.groups.flatMap((group) => group.entries);
+    const groups = await getTierBoard();
+    const placed = groups.flatMap((group) => group.entries);
 
-    expect(board.groups.length).toBeGreaterThan(0);
+    expect(groups.length).toBeGreaterThan(0);
     expect(placed.length).toBeGreaterThan(0);
     expect(placed.every((entry) => Boolean(entry.character.name))).toBe(true);
   });
 
   it("сохраняет порядок тиров из данных", async () => {
-    const board = await getTierBoard();
-    expect(board.groups.map((group) => group.tier.id)).toEqual(["S", "A"]);
+    const groups = await getTierBoard();
+    expect(groups.map((group) => group.tier.id)).toEqual(["S", "A"]);
   });
 
   it("проставляет каждой записи роль из допустимого набора", async () => {
-    const board = await getTierBoard();
-    const roles = board.groups.flatMap((group) =>
+    const groups = await getTierBoard();
+    const roles = groups.flatMap((group) =>
       group.entries.map((entry) => entry.role),
     );
 
@@ -104,8 +104,8 @@ describe("тир-лист", () => {
   });
 
   it("не дублирует персонажей между тирами", async () => {
-    const board = await getTierBoard();
-    const ids = board.groups.flatMap((group) =>
+    const groups = await getTierBoard();
+    const ids = groups.flatMap((group) =>
       group.entries.map((entry) => entry.character.id),
     );
 

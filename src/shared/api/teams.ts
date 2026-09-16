@@ -7,7 +7,7 @@ import {
   type TeamDamageType,
   type TeamRecord,
 } from "./schemas";
-import { getAllCharacters } from "./characters";
+import { loadCharactersById } from "./characters";
 
 /**
  * Доступ к командам. Состав описан один раз в `data/teams.json` и перечисляет
@@ -31,8 +31,7 @@ export type Team = {
  * Порядок участников — авторский, из данных: он несёт смысл (основной ДД первым).
  */
 async function resolveTeams(records: TeamRecord[]): Promise<Team[]> {
-  const characters = await getAllCharacters();
-  const byId = new Map(characters.map((character) => [character.id, character]));
+  const byId = loadCharactersById();
 
   return records.map((team) => ({
     damageType: team.damageType,

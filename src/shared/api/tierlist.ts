@@ -7,7 +7,7 @@ import {
   type Tier,
   type TierRole,
 } from "./schemas";
-import { getAllCharacters } from "./characters";
+import { loadCharactersById } from "./characters";
 
 /**
  * Доступ к тир-листу. Наружу отдаются уже склеенные с персонажами группы,
@@ -27,16 +27,12 @@ export type TierGroup = {
   entries: TierBoardEntry[];
 };
 
-export type TierBoard = {
-  groups: TierGroup[];
-};
-
-export async function getTierBoard(): Promise<TierBoard> {
+/** Тиры в порядке из данных, в каждом — записи, склеенные с персонажами. */
+export async function getTierBoard(): Promise<TierGroup[]> {
   const { tiers, entries } = loadTierList();
-  const characters = await getAllCharacters();
-  const byId = new Map(characters.map((character) => [character.id, character]));
+  const byId = loadCharactersById();
 
-  const groups = tiers.map((tier) => ({
+  return tiers.map((tier) => ({
     tier,
     entries: entries
       .filter((entry) => entry.tier === tier.id)
@@ -49,8 +45,6 @@ export async function getTierBoard(): Promise<TierBoard> {
           : [];
       }),
   }));
-
-  return { groups };
 }
 
 /** Тир конкретного персонажа — для карточки персонажа и страницы гайда. */

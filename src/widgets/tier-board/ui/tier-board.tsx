@@ -1,27 +1,11 @@
-import { CharacterTile, type Character } from '@/entities/character'
-import {
-  TierBadge,
-  getTierRoleColor,
-  getTierRoleIcon,
-  type Tier,
-  type TierRole,
-} from '@/entities/tier'
+import { CharacterTile } from '@/entities/character'
+import { TierBadge, type TierGroup, type TierRole } from '@/entities/tier'
 import { getTierRoleLabel } from '@/shared/config'
-import { cn } from '@/shared/lib'
-
-export type TierBoardEntry = {
-  character: Character
-  role: TierRole
-  note?: string
-}
-
-export type TierBoardGroup = {
-  tier: Tier
-  entries: TierBoardEntry[]
-}
+import { cn, getRoleTextColor, renderRoleIcon } from '@/shared/lib'
+import { EmptyState } from '@/shared/ui/empty-state'
 
 type TierBoardProps = {
-  groups: TierBoardGroup[]
+  groups: TierGroup[]
   emptyMessage?: string
 }
 
@@ -37,18 +21,22 @@ const roleOrder: TierRole[] = ['pure-dps', 'anomaly-dps', 'support']
  */
 const gridTemplate = 'lg:grid lg:grid-cols-3'
 
+/** Иконка и подпись роли в её цвете — у шапки колонки и у группы на узком экране. */
+function RoleLabel({ role, iconClassName }: { role: TierRole; iconClassName: string }) {
+  return (
+    <>
+      {renderRoleIcon(role, iconClassName)}
+      {getTierRoleLabel(role)}
+    </>
+  )
+}
+
 export function TierBoard({
   groups,
   emptyMessage = 'Под выбранные фильтры никто не подошёл.',
 }: TierBoardProps) {
-  const isEmpty = groups.every((group) => group.entries.length === 0)
-
-  if (isEmpty) {
-    return (
-      <p className="rounded-xl border border-dashed py-16 text-center text-sm text-muted-foreground">
-        {emptyMessage}
-      </p>
-    )
+  if (groups.every((group) => group.entries.length === 0)) {
+    return <EmptyState>{emptyMessage}</EmptyState>
   }
 
   return (
@@ -57,23 +45,18 @@ export function TierBoard({
           раскладывается в три колонки. У секции тира нет горизонтального
           отступа перед сеткой колонок, поэтому и здесь его нет — иначе
           сетки разойдутся по ширине. */}
-      <div className={`${gridTemplate} hidden gap-3`}>
-        {roleOrder.map((role) => {
-          const RoleIcon = getTierRoleIcon(role)
-
-          return (
-            <h2
-              key={role}
-              className={cn(
-                'flex items-center justify-center gap-2 rounded-lg border bg-card px-3 py-2 text-center text-sm font-semibold tracking-wide',
-                getTierRoleColor(role),
-              )}
-            >
-              {RoleIcon ? <RoleIcon className="size-4" aria-hidden /> : null}
-              {getTierRoleLabel(role)}
-            </h2>
-          )
-        })}
+      <div className={cn(gridTemplate, 'hidden gap-3')}>
+        {roleOrder.map((role) => (
+          <h2
+            key={role}
+            className={cn(
+              'flex items-center justify-center gap-2 rounded-lg border bg-card px-3 py-2 text-center text-sm font-semibold tracking-wide',
+              getRoleTextColor(role),
+            )}
+          >
+            <RoleLabel role={role} iconClassName="size-4" />
+          </h2>
+        ))}
       </div>
 
       {groups.map(({ tier, entries }) => (
@@ -87,10 +70,9 @@ export function TierBoard({
             />
           </div>
 
-          <div className={`${gridTemplate} gap-3`}>
+          <div className={cn(gridTemplate, 'gap-3')}>
             {roleOrder.map((role) => {
               const inRole = entries.filter((entry) => entry.role === role)
-              const RoleIcon = getTierRoleIcon(role)
 
               return (
                 <div
@@ -102,13 +84,10 @@ export function TierBoard({
                   <h3
                     className={cn(
                       'flex items-center justify-center gap-1.5 text-xs font-medium tracking-wide uppercase lg:hidden',
-                      getTierRoleColor(role),
+                      getRoleTextColor(role),
                     )}
                   >
-                    {RoleIcon ? (
-                      <RoleIcon className="size-3.5" aria-hidden />
-                    ) : null}
-                    {getTierRoleLabel(role)}
+                    <RoleLabel role={role} iconClassName="size-3.5" />
                   </h3>
 
                   {inRole.length === 0 ? (

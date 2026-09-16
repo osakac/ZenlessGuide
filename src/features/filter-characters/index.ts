@@ -4,6 +4,6 @@ export { useCharacterFilters } from "./model/use-character-filters";
 export {
   applyCharacterFilters,
   isFilterActive,
+  matchesCharacterFilters,
 } from "./lib/apply-filters";
-export { emptyFilterState } from "./model/types";
 export type { CharacterFilterState } from "./model/types";

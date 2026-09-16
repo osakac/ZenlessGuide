@@ -1,4 +1,5 @@
 import { CharacterCard, type Character } from "@/entities/character";
+import { EmptyState } from "@/shared/ui/empty-state";
 
 type CharacterCardGridProps = {
   characters: Character[];
@@ -9,13 +10,7 @@ export function CharacterCardGrid({
   characters,
   emptyMessage = "Никто не подошёл под выбранные фильтры.",
 }: CharacterCardGridProps) {
-  if (characters.length === 0) {
-    return (
-      <p className="rounded-xl border border-dashed py-16 text-center text-sm text-muted-foreground">
-        {emptyMessage}
-      </p>
-    );
-  }
+  if (characters.length === 0) return <EmptyState>{emptyMessage}</EmptyState>;
 
   return (
     <ul className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">

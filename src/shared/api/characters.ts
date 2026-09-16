@@ -11,6 +11,14 @@ import { parseCharactersFile, type Character } from "./schemas";
 
 const loadCharacters = once(() => parseCharactersFile(charactersData).characters);
 
+/**
+ * Персонажи по id — для склейки с командами и тир-листом. Внутренняя функция
+ * модуля `shared/api`: наружу через index.ts не отдаётся.
+ */
+export const loadCharactersById = once(
+  () => new Map(loadCharacters().map((character) => [character.id, character])),
+);
+
 export async function getAllCharacters(): Promise<Character[]> {
   return loadCharacters();
 }
@@ -19,10 +27,6 @@ export async function getCharacterBySlug(
   slug: string,
 ): Promise<Character | null> {
   return loadCharacters().find((character) => character.slug === slug) ?? null;
-}
-
-export async function getCharacterById(id: string): Promise<Character | null> {
-  return loadCharacters().find((character) => character.id === id) ?? null;
 }
 
 export type FilterOptions = {

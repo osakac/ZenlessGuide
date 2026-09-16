@@ -6,6 +6,11 @@ export {
   type BackSource,
 } from "./routes";
 export {
+  isTeamDamageType,
+  teamDamageTypes,
+  type TeamDamageType,
+} from "./team-damage-types";
+export {
   filterLabels,
   getAttributeLabel,
   getAttributeIcon,

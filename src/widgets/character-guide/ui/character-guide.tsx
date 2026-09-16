@@ -1,6 +1,7 @@
 import type { Character } from "@/entities/character";
-import { TeamCard, type Team } from "@/entities/team";
+import { getTeamKey, TeamCard, type Team } from "@/entities/team";
 import { getStatLabel } from "@/shared/config";
+import { EmptyState } from "@/shared/ui/empty-state";
 
 import { GuideSection } from "./guide-section";
 
@@ -18,25 +19,27 @@ type CharacterGuideProps = {
  */
 export function CharacterGuide({ character, teams = [] }: CharacterGuideProps) {
   const { stats, buildGuide } = character;
-  const hasStats = stats && Object.keys(stats).length > 0;
-
-  const hasGuide = [
-    hasStats,
-    buildGuide?.engines?.length,
-    buildGuide?.discs?.length,
+  const hasStats = Boolean(stats && Object.keys(stats).length);
+  const hasStatPriority = Boolean(
     buildGuide?.mainStats?.length || buildGuide?.subStats?.length,
-    buildGuide?.skillPriority?.length,
-    buildGuide?.tips?.length,
-  ].some(Boolean);
+  );
+
+  const hasGuide =
+    hasStats ||
+    hasStatPriority ||
+    Boolean(
+      buildGuide?.engines?.length ||
+        buildGuide?.discs?.length ||
+        buildGuide?.skillPriority?.length ||
+        buildGuide?.tips?.length,
+    );
 
   const teamsSection = (
     <GuideSection title="Команды">
       {teams.length ? (
         <ul className="grid gap-4 sm:grid-cols-2">
-          {/* Ключ — набор участников: он уникален по схеме данных,
-              и ничего другого в составе нет. */}
           {teams.map((team) => (
-            <li key={team.members.map((member) => member.id).join("|")}>
+            <li key={getTeamKey(team)}>
               <TeamCard team={team} currentCharacterId={character.id} />
             </li>
           ))}
@@ -49,20 +52,16 @@ export function CharacterGuide({ character, teams = [] }: CharacterGuideProps) {
     </GuideSection>
   );
 
-  if (!hasGuide) {
-    return (
-      <div className="flex flex-col gap-4">
-        <p className="rounded-xl border border-dashed py-12 text-center text-sm text-muted-foreground">
-          Гайд по этому агенту ещё не написан.
-        </p>
-        {teamsSection}
-      </div>
-    );
-  }
-
   return (
     <div className="flex flex-col gap-4">
-      {hasStats ? (
+      {/* Без гайда все секции ниже скрыты сами, остаются только «Команды». */}
+      {hasGuide ? null : (
+        <EmptyState className="py-12">
+          Гайд по этому агенту ещё не написан.
+        </EmptyState>
+      )}
+
+      {stats && hasStats ? (
         <GuideSection title="Базовые статы">
           <dl className="grid grid-cols-2 gap-x-6 gap-y-2 sm:grid-cols-3">
             {Object.entries(stats).map(([key, value]) => (
@@ -117,7 +116,7 @@ export function CharacterGuide({ character, teams = [] }: CharacterGuideProps) {
         </GuideSection>
       ) : null}
 
-      {buildGuide?.mainStats?.length || buildGuide?.subStats?.length ? (
+      {buildGuide && hasStatPriority ? (
         <GuideSection title="Приоритет статов">
           {buildGuide.mainStats?.length ? (
             <dl className="mb-4 flex flex-col gap-2">

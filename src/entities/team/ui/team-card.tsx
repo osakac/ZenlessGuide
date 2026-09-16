@@ -17,14 +17,37 @@ type TeamCardProps = {
   from?: BackSource
 }
 
-function MemberPortrait({ member }: { member: TeamMember }) {
+function MemberPortrait({
+  member,
+  isCurrent,
+}: {
+  member: TeamMember
+  isCurrent: boolean
+}) {
   return (
-    <Portrait
-      src={member.image}
-      alt={member.name}
-      sizes="(max-width: 640px) 28vw, 120px"
-      className="aspect-4/5 w-full rounded-xl border border-border/60 shadow-sm transition-all duration-200 group-hover:border-primary/60 group-hover:shadow-md"
-    />
+    <>
+      <Portrait
+        src={member.image}
+        alt={member.name}
+        sizes="(max-width: 640px) 28vw, 120px"
+        className={cn(
+          'aspect-4/5 w-full rounded-xl shadow-sm',
+          isCurrent
+            ? 'border-2 border-primary shadow-primary/20'
+            : 'border border-border/60 transition-all duration-200 group-hover:border-primary/60 group-hover:shadow-md',
+        )}
+      />
+      <span
+        className={cn(
+          'truncate text-center text-[13px]',
+          isCurrent
+            ? 'font-medium text-primary'
+            : 'text-muted-foreground transition-colors group-hover:text-primary',
+        )}
+      >
+        {member.name}
+      </span>
+    </>
   )
 }
 
@@ -64,15 +87,7 @@ export function TeamCard({ team, currentCharacterId, from }: TeamCardProps) {
             <li key={member.id} className="min-w-0">
               {isCurrent ? (
                 <div className="flex flex-col gap-1.5">
-                  <Portrait
-                    src={member.image}
-                    alt={member.name}
-                    sizes="(max-width: 640px) 28vw, 120px"
-                    className="aspect-4/5 w-full rounded-xl border-2 border-primary shadow-sm shadow-primary/20"
-                  />
-                  <span className="truncate text-center text-[13px] font-medium text-primary">
-                    {member.name}
-                  </span>
+                  <MemberPortrait member={member} isCurrent />
                 </div>
               ) : (
                 <Link
@@ -82,10 +97,7 @@ export function TeamCard({ team, currentCharacterId, from }: TeamCardProps) {
                     'focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none',
                   )}
                 >
-                  <MemberPortrait member={member} />
-                  <span className="truncate text-center text-[13px] text-muted-foreground transition-colors group-hover:text-primary">
-                    {member.name}
-                  </span>
+                  <MemberPortrait member={member} isCurrent={false} />
                 </Link>
               )}
             </li>

@@ -1,45 +1,26 @@
 "use client";
 
-import { useRouter, useSearchParams } from "next/navigation";
-import { useCallback, useMemo } from "react";
+import { useMemo } from "react";
 
-import type { TeamDamageType } from "@/entities/team";
+import { isTeamDamageType } from "@/shared/config";
+import { useQueryState } from "@/shared/lib/use-query-state";
 
-import { emptyFilterState, type TeamFilterState } from "./types";
+import type { TeamFilterState } from "./types";
 
-/**
- * Состояние фильтров держится в query-параметрах: ссылку с выбранными
- * фильтрами можно скопировать и переслать, а кнопка «назад» работает штатно.
- */
+const queryKeys = { agentName: "agent", damageType: "damageType" } as const;
+
 export function useTeamFilters() {
-  const router = useRouter();
-  const searchParams = useSearchParams();
+  const { values, set, reset } = useQueryState(queryKeys);
 
   const state = useMemo<TeamFilterState>(
     () => ({
-      agentName: searchParams.get("agent") ?? "",
-      damageType: searchParams.get("damageType") as TeamDamageType | null,
+      agentName: values.agentName ?? "",
+      // Параметр приходит из URL как есть: неизвестный тип урона не должен
+      // превращаться в фильтр, под который не подходит ни один состав.
+      damageType: isTeamDamageType(values.damageType) ? values.damageType : null,
     }),
-    [searchParams],
+    [values],
   );
 
-  const setState = useCallback(
-    (next: Partial<TeamFilterState>) => {
-      const merged = { ...state, ...next };
-      const params = new URLSearchParams();
-
-      if (merged.agentName.trim()) params.set("agent", merged.agentName.trim());
-      if (merged.damageType) params.set("damageType", merged.damageType);
-
-      const query = params.toString();
-      router.replace(query ? `?${query}` : "?", { scroll: false });
-    },
-    [router, state],
-  );
-
-  const reset = useCallback(() => {
-    router.replace("?", { scroll: false });
-  }, [router]);
-
-  return { state, setState, reset, emptyFilterState };
+  return { state, setState: set, reset };
 }

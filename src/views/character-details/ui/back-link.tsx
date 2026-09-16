@@ -36,8 +36,6 @@ export function BackLink() {
   const source = useSearchParams().get(backParam);
 
   return (
-    <BackLinkView
-      {...(isBackSource(source) ? targets[source] : targets.characters)}
-    />
+    <BackLinkView {...targets[isBackSource(source) ? source : "characters"]} />
   );
 }

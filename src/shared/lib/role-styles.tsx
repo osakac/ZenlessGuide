@@ -37,10 +37,6 @@ const roleToggleStyles: Record<string, string> = {
     "data-[state=on]:border-role-support/40 data-[state=on]:bg-role-support/15 data-[state=on]:text-role-support data-[state=on]:hover:bg-role-support/20",
 };
 
-export function getRoleIcon(role: string): LucideIcon | undefined {
-  return roleIcons[role];
-}
-
 /**
  * Рисует иконку роли готовым узлом, а не отдаёт компонент вызывающей
  * стороне: если рендерить `<Icon />` из переменной, вычисленной прямо в теле

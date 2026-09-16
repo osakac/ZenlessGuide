@@ -6,15 +6,10 @@ import { Skeleton } from "@/shared/ui/skeleton";
 import { TierListContent } from "./tierlist-content";
 
 export async function TierListPage() {
-  const [board, options] = await Promise.all([
+  const [groups, options] = await Promise.all([
     getTierBoard(),
     getCharacterFilterOptions(),
   ]);
-
-  const groups = board.groups.map((group) => ({
-    tier: group.tier,
-    entries: group.entries,
-  }));
 
   return (
     <div className="mx-auto flex w-full max-w-6xl flex-col gap-6 px-4 py-10">

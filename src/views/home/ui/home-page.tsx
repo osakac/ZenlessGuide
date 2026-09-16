@@ -11,7 +11,7 @@ const sections = [
   {
     href: routes.tierlist,
     title: "Тир-лист",
-    text: "Агенты по тирам с фильтрами по атрибуту, специализации и рангу.",
+    text: "Агенты по тирам с фильтрами по атрибуту и специализации.",
   },
   {
     href: routes.characters,
@@ -26,8 +26,7 @@ const sections = [
 ];
 
 export async function HomePage() {
-  const board = await getTierBoard();
-  const topTier = board.groups[0];
+  const [topTier] = await getTierBoard();
 
   return (
     <div className="mx-auto flex w-full max-w-6xl flex-col gap-12 px-4 py-12">
