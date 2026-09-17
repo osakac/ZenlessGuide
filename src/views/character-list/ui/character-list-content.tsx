@@ -2,7 +2,7 @@
 
 import { useMemo } from "react";
 
-import type { Character } from "@/entities/character";
+import type { CharacterSummary } from "@/entities/character";
 import {
   applyCharacterFilters,
   CharacterFilters,
@@ -12,7 +12,7 @@ import {
 import { CharacterCardGrid } from "@/widgets/character-card-grid";
 
 type CharacterListContentProps = {
-  characters: Character[];
+  characters: CharacterSummary[];
   options: CharacterFilterOptions;
 };
 

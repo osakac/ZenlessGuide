@@ -1,13 +1,12 @@
 import tierListData from "@data/tierlist.json";
 
 import { once } from "../lib/once";
+import { parseTierListFile, type Tier, type TierRole } from "./schemas";
 import {
-  parseTierListFile,
-  type Character,
-  type Tier,
-  type TierRole,
-} from "./schemas";
-import { loadCharactersById } from "./characters";
+  loadCharactersById,
+  toCharacterSummary,
+  type CharacterSummary,
+} from "./characters";
 
 /**
  * Доступ к тир-листу. Наружу отдаются уже склеенные с персонажами группы,
@@ -17,7 +16,8 @@ import { loadCharactersById } from "./characters";
 const loadTierList = once(() => parseTierListFile(tierListData));
 
 export type TierBoardEntry = {
-  character: Character;
+  /** Краткая запись: доска уходит в клиентский компонент тир-листа. */
+  character: CharacterSummary;
   role: TierRole;
   note?: string;
 };
@@ -41,7 +41,13 @@ export async function getTierBoard(): Promise<TierGroup[]> {
       .flatMap((entry) => {
         const character = byId.get(entry.characterId);
         return character
-          ? [{ character, role: entry.role, note: entry.note }]
+          ? [
+              {
+                character: toCharacterSummary(character),
+                role: entry.role,
+                note: entry.note,
+              },
+            ]
           : [];
       }),
   }));

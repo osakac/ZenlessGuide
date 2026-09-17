@@ -73,9 +73,14 @@ export async function HomePage() {
           </div>
 
           <ul className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
-            {topTier.entries.map(({ character }) => (
+            {topTier.entries.map(({ character }, index) => (
               <li key={character.id} className="flex">
-                <CharacterCard character={character} className="w-full" />
+                <CharacterCard
+                  character={character}
+                  className="w-full"
+                  // Первый ряд сетки из пяти колонок виден без прокрутки.
+                  eager={index < 5}
+                />
               </li>
             ))}
           </ul>

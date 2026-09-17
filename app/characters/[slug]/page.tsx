@@ -3,6 +3,12 @@ import type { Metadata } from "next";
 import { getAllCharacters, getCharacterBySlug } from "@/shared/api";
 import { CharacterDetailsPage } from "@/views/character-details";
 
+/**
+ * Все агенты известны на сборке: неизвестный slug сразу отдаёт 404,
+ * не запуская рендер страницы на сервере по запросу.
+ */
+export const dynamicParams = false;
+
 export async function generateStaticParams() {
   const characters = await getAllCharacters();
   return characters.map((character) => ({ slug: character.slug }));

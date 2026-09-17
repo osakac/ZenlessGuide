@@ -19,14 +19,49 @@ export const loadCharactersById = once(
   () => new Map(loadCharacters().map((character) => [character.id, character])),
 );
 
+const loadCharactersBySlug = once(
+  () => new Map(loadCharacters().map((character) => [character.slug, character])),
+);
+
+/**
+ * Персонаж в списках и сетках: ровно то, что рисуют карточка и плитка.
+ * Списки уходят в клиентские компоненты и сериализуются в RSC-payload целиком,
+ * а билд-гайд, статы и описание занимают ~90% записи и там не нужны.
+ */
+export type CharacterSummary = Pick<
+  Character,
+  "id" | "slug" | "name" | "image" | "attribute" | "specialty"
+>;
+
+/**
+ * Поля перечислены явно: тип `Pick` лишнее не отрезает, а в payload
+ * попадает сам объект, со всем, что в нём лежит.
+ */
+export const toCharacterSummary = ({
+  id,
+  slug,
+  name,
+  image,
+  attribute,
+  specialty,
+}: Character): CharacterSummary => ({ id, slug, name, image, attribute, specialty });
+
+const loadCharacterSummaries = once(() => loadCharacters().map(toCharacterSummary));
+
+/** Полные записи — для страницы агента и генерации маршрутов. */
 export async function getAllCharacters(): Promise<Character[]> {
   return loadCharacters();
+}
+
+/** Краткие записи — для списков, фильтруемых на клиенте. */
+export async function getCharacterSummaries(): Promise<CharacterSummary[]> {
+  return loadCharacterSummaries();
 }
 
 export async function getCharacterBySlug(
   slug: string,
 ): Promise<Character | null> {
-  return loadCharacters().find((character) => character.slug === slug) ?? null;
+  return loadCharactersBySlug().get(slug) ?? null;
 }
 
 export type FilterOptions = {

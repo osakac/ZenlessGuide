@@ -9,12 +9,12 @@ import {
   getAttributeHoverTextStyle,
 } from "@/shared/lib";
 
-import type { Character } from "../model/types";
+import type { CharacterSummary } from "../model/types";
 import { AttributeIconBadge } from "@/shared/ui/attribute-icon-badge";
 import { Portrait } from "@/shared/ui/portrait";
 
 type CharacterCardProps = {
-  character: Character;
+  character: CharacterSummary;
   className?: string;
   /**
    * "label" — подпись специализации текстом под именем (по умолчанию).
@@ -22,12 +22,15 @@ type CharacterCardProps = {
    * на странице списка агентов, где карточек много и текст превращается в шум.
    */
   specialtyDisplay?: "label" | "icon";
+  /** Карточка на первом экране: портрет грузится сразу, это кандидат в LCP. */
+  eager?: boolean;
 };
 
 export function CharacterCard({
   character,
   className,
   specialtyDisplay = "label",
+  eager = false,
 }: CharacterCardProps) {
   const specialtyIcon = getSpecialtyIcon(character.specialty);
   const specialtyLabel = getSpecialtyLabel(character.specialty);
@@ -45,6 +48,7 @@ export function CharacterCard({
       <Portrait
         src={character.image}
         alt={character.name}
+        eager={eager}
         className="aspect-4/5 w-full"
       >
         <AttributeIconBadge

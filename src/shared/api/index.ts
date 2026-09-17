@@ -2,6 +2,8 @@ export {
   getAllCharacters,
   getCharacterBySlug,
   getCharacterFilterOptions,
+  getCharacterSummaries,
+  type CharacterSummary,
   type FilterOptions,
 } from "./characters";
 

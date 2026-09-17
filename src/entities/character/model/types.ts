@@ -1,1 +1,1 @@
-export type { BuildGuide, Character } from "@/shared/api";
+export type { BuildGuide, Character, CharacterSummary } from "@/shared/api";

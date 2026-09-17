@@ -1,4 +1,4 @@
-import type { Character } from "@/entities/character";
+import type { CharacterSummary } from "@/entities/character";
 
 import type { CharacterFilterState } from "../model/types";
 
@@ -9,7 +9,7 @@ import type { CharacterFilterState } from "../model/types";
  */
 export function matchesCharacterFilters(
   state: CharacterFilterState,
-): (character: Character) => boolean {
+): (character: CharacterSummary) => boolean {
   const search = state.search.trim().toLowerCase();
 
   return (character) =>
@@ -19,10 +19,10 @@ export function matchesCharacterFilters(
 }
 
 /** Чистая функция фильтрации: используется и в UI, и в тестах. */
-export function applyCharacterFilters(
-  characters: Character[],
+export function applyCharacterFilters<T extends CharacterSummary>(
+  characters: T[],
   state: CharacterFilterState,
-): Character[] {
+): T[] {
   return characters.filter(matchesCharacterFilters(state));
 }
 

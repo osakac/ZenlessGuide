@@ -13,7 +13,13 @@ type PortraitProps = {
   src: string;
   alt: string;
   sizes?: string;
-  priority?: boolean;
+  /**
+   * Предзагрузить картинку из `<head>` — только для единственного LCP-элемента
+   * страницы. Замена `priority`, устаревшего в Next.js 16.
+   */
+  preload?: boolean;
+  /** Грузить сразу, а не при подлёте к экрану — для картинок первого экрана. */
+  eager?: boolean;
   className?: string;
   /** Оверлей поверх изображения — например, бейдж атрибута в углу. */
   children?: React.ReactNode;
@@ -23,7 +29,8 @@ export function Portrait({
   src,
   alt,
   sizes = "(max-width: 768px) 50vw, 240px",
-  priority = false,
+  preload = false,
+  eager = false,
   className,
   children,
 }: PortraitProps) {
@@ -34,7 +41,8 @@ export function Portrait({
         alt={alt}
         fill
         sizes={sizes}
-        priority={priority}
+        preload={preload}
+        loading={eager ? "eager" : undefined}
         // SVG оптимизатору изображений прогонять незачем: он и так векторный.
         // Портреты персонажей — webp, они проходят обычную оптимизацию.
         unoptimized={src.endsWith(".svg")}

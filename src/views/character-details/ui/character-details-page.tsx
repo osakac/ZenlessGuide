@@ -42,7 +42,7 @@ export async function CharacterDetailsPage({
         <Portrait
           src={character.image}
           alt={character.name}
-          priority
+          preload
           sizes="(max-width: 640px) 100vw, 280px"
           className="aspect-4/5 w-full shrink-0 rounded-xl sm:w-64"
         />

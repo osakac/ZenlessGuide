@@ -4,6 +4,7 @@ import {
   getAllCharacters,
   getCharacterBySlug,
   getCharacterFilterOptions,
+  getCharacterSummaries,
 } from "./characters";
 import {
   parseCharactersFile,
@@ -16,6 +17,9 @@ import {
   getTierForCharacter,
   getTiersByCharacterId,
 } from "./tierlist";
+
+/** Поля `CharacterSummary` — то, что уходит в клиентские списки. */
+const summaryKeys = ["attribute", "id", "image", "name", "slug", "specialty"];
 
 describe("валидация данных", () => {
   it("разбирает корректный файл персонажей", () => {
@@ -64,6 +68,21 @@ describe("персонажи", () => {
     await expect(getCharacterBySlug("no-such-character")).resolves.toBeNull();
   });
 
+  it("находит каждого персонажа по его slug", async () => {
+    for (const character of await getAllCharacters()) {
+      await expect(getCharacterBySlug(character.slug)).resolves.toBe(character);
+    }
+  });
+
+  it("отдаёт спискам только поля карточки, без билд-гайда", async () => {
+    const summaries = await getCharacterSummaries();
+
+    expect(summaries).toHaveLength((await getAllCharacters()).length);
+    for (const summary of summaries) {
+      expect(Object.keys(summary).sort()).toEqual(summaryKeys);
+    }
+  });
+
   it("собирает варианты фильтров из самих данных, без дублей", async () => {
     const options = await getCharacterFilterOptions();
     const characters = await getAllCharacters();
@@ -82,6 +101,14 @@ describe("тир-лист", () => {
     expect(groups.length).toBeGreaterThan(0);
     expect(placed.length).toBeGreaterThan(0);
     expect(placed.every((entry) => Boolean(entry.character.name))).toBe(true);
+  });
+
+  it("кладёт в записи доски краткие записи персонажей", async () => {
+    const groups = await getTierBoard();
+
+    for (const { character } of groups.flatMap((group) => group.entries)) {
+      expect(Object.keys(character).sort()).toEqual(summaryKeys);
+    }
   });
 
   it("сохраняет порядок тиров из данных", async () => {

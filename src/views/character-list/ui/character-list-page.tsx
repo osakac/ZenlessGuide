@@ -1,13 +1,13 @@
 import { Suspense } from "react";
 
-import { getAllCharacters, getCharacterFilterOptions } from "@/shared/api";
+import { getCharacterSummaries, getCharacterFilterOptions } from "@/shared/api";
 import { Skeleton } from "@/shared/ui/skeleton";
 
 import { CharacterListContent } from "./character-list-content";
 
 export async function CharacterListPage() {
   const [characters, options] = await Promise.all([
-    getAllCharacters(),
+    getCharacterSummaries(),
     getCharacterFilterOptions(),
   ]);
 

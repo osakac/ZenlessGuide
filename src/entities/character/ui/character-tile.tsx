@@ -8,12 +8,12 @@ import {
   getAttributeHoverTextStyle,
 } from "@/shared/lib";
 
-import type { Character } from "../model/types";
+import type { CharacterSummary } from "../model/types";
 import { AttributeIconBadge } from "@/shared/ui/attribute-icon-badge";
 import { Portrait } from "@/shared/ui/portrait";
 
 type CharacterTileProps = {
-  character: Character;
+  character: CharacterSummary;
   /** Куда вернёт кнопка «назад» на странице агента. */
   from?: BackSource;
   className?: string;

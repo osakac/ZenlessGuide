@@ -35,6 +35,7 @@ Next.js 16 (App Router) + TypeScript, Tailwind v4, shadcn/ui на Radix, `next-t
 - Фича `filter-teams`: поиск по имени участника, тип урона состава.
 - SEO: метаданные на каждом маршруте, `generateStaticParams` для страниц агентов.
 - Ревизия кода: исправлен поиск по имени из нескольких слов (пробел съедался при записи в URL) и неизвестный `damageType` из URL; удалены неиспользуемые компоненты shadcn (`card`, `badge`, `select`, `separator`, `dropdown-menu`), зависимости `clsx`/`tailwind-merge` и мёртвые экспорты; повторяющаяся разметка фильтров и пустых состояний вынесена в `shared/ui`, работа с query-параметрами — в `shared/lib/use-query-state.ts`.
+- Ревизия производительности (Vercel React Best Practices): клиентским спискам отдаётся `CharacterSummary` вместо полной записи (HTML `/characters` и `/tierlist` меньше в ~3,5 раза), URL фильтров пишется через `history.replaceState` без навигации роутера, мобильное меню — ленивый чанк, убран неиспользуемый Geist Mono, `priority` → `preload`/`loading="eager"`, `dynamicParams = false` для страниц агентов, `optimizePackageImports` для `radix-ui`. Подробности — в разделе «Производительность» [ARCHITECTURE.md](ARCHITECTURE.md).
 
 ## Этап 4. Наполнение данными
 
