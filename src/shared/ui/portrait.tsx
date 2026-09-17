@@ -15,6 +15,8 @@ type PortraitProps = {
   sizes?: string;
   priority?: boolean;
   className?: string;
+  /** Оверлей поверх изображения — например, бейдж атрибута в углу. */
+  children?: React.ReactNode;
 };
 
 export function Portrait({
@@ -23,6 +25,7 @@ export function Portrait({
   sizes = "(max-width: 768px) 50vw, 240px",
   priority = false,
   className,
+  children,
 }: PortraitProps) {
   return (
     <div className={cn("relative overflow-hidden bg-muted", className)}>
@@ -37,6 +40,7 @@ export function Portrait({
         unoptimized={src.endsWith(".svg")}
         className="object-cover pointer-events-none"
       />
+      {children}
     </div>
   );
 }

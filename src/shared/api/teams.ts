@@ -18,8 +18,11 @@ import { loadCharactersById } from "./characters";
 
 const loadTeams = once(() => parseTeamsFile(teamsData).teams);
 
-/** Участник состава: ровно то, что нужно для портрета и ссылки. */
-export type TeamMember = Pick<Character, "id" | "name" | "slug" | "image">;
+/** Участник состава: ровно то, что нужно для портрета, бейджа атрибута и ссылки. */
+export type TeamMember = Pick<
+  Character,
+  "id" | "name" | "slug" | "image" | "attribute"
+>;
 
 export type Team = {
   members: TeamMember[];
@@ -53,6 +56,7 @@ async function resolveTeams(records: TeamRecord[]): Promise<Team[]> {
         name: character.name,
         slug: character.slug,
         image: character.image,
+        attribute: character.attribute,
       };
     }),
   }));

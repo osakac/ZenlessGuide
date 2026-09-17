@@ -1,8 +1,16 @@
 import Link from 'next/link'
 
+import { AttributeIconBadge } from '@/shared/ui/attribute-icon-badge'
 import { Portrait } from '@/shared/ui/portrait'
 import { routes, getTierRoleLabel, type BackSource } from '@/shared/config'
-import { cn, getRoleBadgeStyle, renderRoleIcon } from '@/shared/lib'
+import {
+  cn,
+  getAttributeGroupHoverBorderStyle,
+  getAttributeGroupHoverShadowStyle,
+  getAttributeHoverTextStyle,
+  getRoleBadgeStyle,
+  renderRoleIcon,
+} from '@/shared/lib'
 
 import type { Team, TeamDamageType, TeamMember } from '../model/types'
 
@@ -15,14 +23,16 @@ type TeamCardProps = {
   currentCharacterId?: string
   /** Откуда переход: страница агента вернёт по кнопке «назад» туда же. */
   from?: BackSource
+  /** Отступ бейджа атрибута от края портрета — теснее на `/teams`, где карточек много на экране. */
+  badgeInset?: 'sm' | 'default'
 }
 
 function MemberPortrait({
   member,
-  isCurrent,
+  badgeInset,
 }: {
   member: TeamMember
-  isCurrent: boolean
+  badgeInset: 'sm' | 'default'
 }) {
   return (
     <>
@@ -31,18 +41,23 @@ function MemberPortrait({
         alt={member.name}
         sizes="(max-width: 640px) 28vw, 120px"
         className={cn(
-          'aspect-4/5 w-full rounded-xl shadow-sm',
-          isCurrent
-            ? 'border-2 border-primary shadow-primary/20'
-            : 'border border-border/60 transition-all duration-200 group-hover:border-primary/60 group-hover:shadow-md',
+          'aspect-4/5 w-full rounded-xl border border-border/60 shadow-sm transition-all duration-200',
+          getAttributeGroupHoverBorderStyle(member.attribute),
+          getAttributeGroupHoverShadowStyle(member.attribute),
         )}
-      />
+      >
+        <AttributeIconBadge
+          attribute={member.attribute}
+          className={cn(
+            'absolute size-6',
+            badgeInset === 'sm' ? 'top-0.5 right-0.5' : 'top-1.5 right-1.5',
+          )}
+        />
+      </Portrait>
       <span
         className={cn(
-          'truncate text-center text-[13px]',
-          isCurrent
-            ? 'font-medium text-primary'
-            : 'text-muted-foreground transition-colors group-hover:text-primary',
+          'truncate text-center text-[13px] text-muted-foreground transition-colors duration-200',
+          getAttributeHoverTextStyle(member.attribute),
         )}
       >
         {member.name}
@@ -65,12 +80,17 @@ function DamageTypeBadge({ damageType }: { damageType: TeamDamageType }) {
   )
 }
 
-export function TeamCard({ team, currentCharacterId, from }: TeamCardProps) {
+export function TeamCard({
+  team,
+  currentCharacterId,
+  from,
+  badgeInset = 'default',
+}: TeamCardProps) {
   return (
     <div
       className={cn(
         'flex h-full flex-col gap-3 rounded-xl border border-border/60 bg-card px-3 py-2',
-        'shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-primary/30 hover:shadow-lg',
+        'shadow-sm transition-all duration-200 hover:border-primary/30 hover:shadow-lg',
       )}
     >
       {team.damageType ? (
@@ -86,8 +106,8 @@ export function TeamCard({ team, currentCharacterId, from }: TeamCardProps) {
           return (
             <li key={member.id} className="min-w-0">
               {isCurrent ? (
-                <div className="flex flex-col gap-1.5">
-                  <MemberPortrait member={member} isCurrent />
+                <div className="group flex flex-col gap-1.5 rounded-xl">
+                  <MemberPortrait member={member} badgeInset={badgeInset} />
                 </div>
               ) : (
                 <Link
@@ -97,7 +117,7 @@ export function TeamCard({ team, currentCharacterId, from }: TeamCardProps) {
                     'focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none',
                   )}
                 >
-                  <MemberPortrait member={member} isCurrent={false} />
+                  <MemberPortrait member={member} badgeInset={badgeInset} />
                 </Link>
               )}
             </li>

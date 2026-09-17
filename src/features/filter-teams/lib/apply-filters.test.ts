@@ -10,6 +10,7 @@ const member = (id: string, name: string) => ({
   name,
   slug: id,
   image: "/images/characters/test.svg",
+  attribute: "physical",
 });
 
 const teams: Team[] = [

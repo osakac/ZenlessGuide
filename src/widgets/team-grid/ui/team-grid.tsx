@@ -16,7 +16,7 @@ export function TeamGrid({
     <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
       {teams.map((team) => (
         <li key={getTeamKey(team)}>
-          <TeamCard team={team} from="teams" />
+          <TeamCard team={team} from="teams" badgeInset="sm" />
         </li>
       ))}
     </ul>

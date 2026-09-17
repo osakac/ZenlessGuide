@@ -153,14 +153,14 @@ html body[data-scroll-locked] {
   --primary-foreground: oklch(0.99 0 0);
   --ring: oklch(0.55 0.24 295);
 
-  /* Атрибуты */
+  /* Атрибуты — оттенки подобраны по цветам иконок из public/images/attributes. */
   --attr-physical: oklch(0.8 0.16 88);
-  --attr-fire: oklch(0.64 0.21 30);
-  --attr-ice: oklch(0.75 0.13 225);
-  --attr-electric: oklch(0.58 0.22 292);
-  --attr-ether: oklch(0.66 0.22 345);
+  --attr-fire: oklch(0.64 0.21 35);
+  --attr-ice: oklch(0.83 0.08 205);
+  --attr-electric: oklch(0.58 0.22 241);
+  --attr-ether: oklch(0.66 0.22 314);
   --attr-wind: oklch(0.7 0.15 165);
-  --attr-lumiflux: oklch(0.72 0.17 105);
+  --attr-lumiflux: oklch(0.72 0.17 338);
   --attr-default: oklch(0.6 0.02 260);
 
   /* Тиры */
@@ -199,12 +199,12 @@ html body[data-scroll-locked] {
   --input: oklch(1 0 0 / 16%);
 
   --attr-physical: oklch(0.85 0.17 88);
-  --attr-fire: oklch(0.72 0.2 32);
-  --attr-ice: oklch(0.82 0.12 225);
-  --attr-electric: oklch(0.72 0.2 292);
-  --attr-ether: oklch(0.75 0.2 345);
+  --attr-fire: oklch(0.72 0.2 35);
+  --attr-ice: oklch(0.89 0.07 205);
+  --attr-electric: oklch(0.72 0.2 241);
+  --attr-ether: oklch(0.75 0.2 314);
   --attr-wind: oklch(0.8 0.14 165);
-  --attr-lumiflux: oklch(0.83 0.16 105);
+  --attr-lumiflux: oklch(0.83 0.16 338);
   --attr-default: oklch(0.72 0.02 260);
 
   --tier-s: oklch(0.82 0.17 65);

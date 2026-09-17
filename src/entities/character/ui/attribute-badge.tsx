@@ -1,7 +1,5 @@
 import { getAttributeLabel } from "@/shared/config";
-import { cn } from "@/shared/lib";
-
-import { getAttributeStyle } from "../lib/attribute-styles";
+import { cn, getAttributeStyle } from "@/shared/lib";
 
 type AttributeBadgeProps = {
   attribute: string;
