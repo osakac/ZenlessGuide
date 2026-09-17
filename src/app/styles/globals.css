@@ -172,6 +172,17 @@ html body[data-scroll-locked] {
   --role-pure-dps: #ed343e;
   --role-anomaly-dps: #c267ec;
   --role-support: #7cde97;
+
+  /* Свитч темы в шапке. Заданы только в :root и не переопределяются в .dark:
+     цвет свитча зависит от его положения, а не от текущей темы, иначе при
+     применении темы (переходы в этот момент отключены) он перекрашивался рывком.
+     Трек повторяет --primary соответствующей темы. */
+  --theme-toggle-track-light: oklch(0.55 0.24 295);
+  --theme-toggle-track-dark: oklch(0.68 0.22 295);
+  --theme-toggle-thumb: oklch(0.99 0 0);
+  --theme-toggle-sun: oklch(0.8 0.17 80);
+  --theme-toggle-moon: oklch(0.85 0.08 250);
+  --theme-toggle-icon-inactive: oklch(0.62 0 0);
 }
 
 .dark {
@@ -216,4 +227,26 @@ html body[data-scroll-locked] {
   --color-role-pure-dps: var(--role-pure-dps);
   --color-role-anomaly-dps: var(--role-anomaly-dps);
   --color-role-support: var(--role-support);
+}
+
+/* Свитч темы до гидратации. React ещё не знает тему и рендерит свитч
+   в положении «светлая», а класс .dark на <html> уже выставлен скриптом
+   next-themes до первой отрисовки — по нему и показываем «тёмное» положение,
+   иначе при загрузке бегунок перепрыгивал с солнца на луну. Правила вне
+   @layer, поэтому перебивают утилиты Tailwind; transform — с !important,
+   чтобы перебить инлайн-стиль бегунка. После гидратации (data-mounted)
+   состояние React даёт те же значения, и переходам нечего анимировать. */
+.dark [data-slot="theme-toggle"]:not([data-mounted]) {
+  [data-slot="switch"] {
+    background-color: var(--theme-toggle-track-dark);
+  }
+  [data-slot="switch-thumb"] {
+    transform: translateX(calc(100% - 2px)) !important;
+  }
+  .lucide-sun {
+    color: var(--theme-toggle-icon-inactive);
+  }
+  .lucide-moon {
+    color: var(--theme-toggle-moon);
+  }
 }
