@@ -21,9 +21,22 @@ const MENU_SIDE_STORAGE_KEY = "zenless-guide:menu-side";
  */
 function readStoredMenuSide(): MenuSide {
   if (typeof window === "undefined") return "right";
-  return window.localStorage.getItem(MENU_SIDE_STORAGE_KEY) === "left"
-    ? "left"
-    : "right";
+  try {
+    return window.localStorage.getItem(MENU_SIDE_STORAGE_KEY) === "left"
+      ? "left"
+      : "right";
+  } catch {
+    // Хранилище отключено (приватный режим, запрет cookies) — сторона по умолчанию.
+    return "right";
+  }
+}
+
+function storeMenuSide(side: MenuSide) {
+  try {
+    window.localStorage.setItem(MENU_SIDE_STORAGE_KEY, side);
+  } catch {
+    // Не запомнится между визитами, но переключение в текущем сеансе работает.
+  }
 }
 
 type MobileMenuProps = {
@@ -71,7 +84,7 @@ export function MobileMenu({ open, onOpenChange }: MobileMenuProps) {
       shouldAnimateSideRef.current = next !== menuSide;
       setMenuSide(next);
       setPendingSide(null);
-      window.localStorage.setItem(MENU_SIDE_STORAGE_KEY, next);
+      storeMenuSide(next);
     }, SWITCH_TRANSITION_MS);
   }
 
