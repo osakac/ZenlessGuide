@@ -20,13 +20,45 @@ function useMounted() {
   );
 }
 
+/**
+ * Глушит CSS-переходы на всё время смены темы. Встроенный
+ * `disableTransitionOnChange` из `next-themes` ненадёжен: снимает стиль через
+ * 1мс, не форсируя пересчёт стилей, и часть элементов с `transition-*` успевает
+ * анимировать цвет, а остальные перекрашиваются мгновенно — рассинхрон.
+ * Здесь стиль снимается только после того, как класс темы уже стоит на
+ * `<html>` и новые цвета посчитаны принудительным reflow: стили уже вычислены
+ * с `transition: none`, и после снятия стиля анимировать нечего. Таймеры, а не
+ * `requestAnimationFrame`: в фоновой вкладке кадры не идут и стиль повис бы.
+ */
+function changeThemeWithoutTransitions(theme: "light" | "dark", apply: () => void) {
+  const style = document.createElement("style");
+  style.textContent =
+    "*,*::before,*::after{transition:none!important;animation-duration:0s!important}";
+  document.head.appendChild(style);
+  apply();
+
+  const root = document.documentElement;
+  const startedAt = performance.now();
+  const release = () => {
+    // Класс ставит эффект `next-themes` после коммита React — ждём его,
+    // но не дольше секунды, чтобы стиль не повис навсегда.
+    if (!root.classList.contains(theme) && performance.now() - startedAt < 1000) {
+      setTimeout(release, 10);
+      return;
+    }
+    void document.body.offsetHeight;
+    setTimeout(() => style.remove(), 50);
+  };
+  setTimeout(release, 0);
+}
+
 export function ThemeToggle() {
   const { resolvedTheme, setTheme } = useTheme();
   const mounted = useMounted();
-  // Выбранное, но ещё не применённое положение свитча. `next-themes` с
-  // `disableTransitionOnChange` на время смены темы глушит все CSS-переходы,
-  // включая переход бегунка — поэтому сначала свитч доезжает по этому
-  // локальному состоянию, и только потом тема применяется.
+  // Выбранное, но ещё не применённое положение свитча. На время смены темы
+  // глушатся все CSS-переходы, включая переход бегунка — поэтому сначала
+  // свитч доезжает по этому локальному состоянию, и только потом тема
+  // применяется.
   const [pendingDark, setPendingDark] = useState<boolean | null>(null);
   const timeoutRef = useRef<ReturnType<typeof setTimeout>>(undefined);
   const isDark = pendingDark ?? (mounted && resolvedTheme === "dark");
@@ -37,8 +69,11 @@ export function ThemeToggle() {
     setPendingDark(checked);
     clearTimeout(timeoutRef.current);
     timeoutRef.current = setTimeout(() => {
-      setTheme(checked ? "dark" : "light");
-      setPendingDark(null);
+      const theme = checked ? "dark" : "light";
+      changeThemeWithoutTransitions(theme, () => {
+        setTheme(theme);
+        setPendingDark(null);
+      });
     }, SWITCH_TRANSITION_MS);
   }
 
